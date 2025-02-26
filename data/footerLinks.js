@@ -8,7 +8,7 @@ export const footerLinks = [
 ];
 export const aboutLinks = [
   { href: "/about-us", text: "Haqqımızda" },
-  { href: "/our-store", text: "Mağazamıza bax" },
+  { href: "/shop-default", text: "Mağazamıza bax" },
   { href: "/contact-1", text: "Əlaqə" },
   { href: "/login", text: "Hesab" },
 ];
