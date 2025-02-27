@@ -103,10 +103,10 @@ export default function MobileMenu() {
                 Bakı adresi
               </li>
               <li>
-                Email: <b>info@saytyarat.com</b>
+                Email: <a href="mailto:info@saytyarat.com">info@saytyarat.com</a>
               </li>
               <li>
-                Telefon: <b>+994 12 404 04 04</b>
+                <a href="tel:+994507431206"> Telefon: <b>+994 50 743 12 06</b></a>
               </li>
             </ul>
           </div>
