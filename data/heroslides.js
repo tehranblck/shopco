@@ -1,7 +1,7 @@
 export const slides = [
   {
     imgSrc: "/images/slider1.jpg",
-    title: "Yaz Endirimləri \n Başladı! ",
+    title: " Endirimlər \n Başladı! ",
     text: "İndi alın, %50-yə qədər endirim qazanın! Hər şey daxil.",
     btnText: "Endirimlərə bax",
   },
