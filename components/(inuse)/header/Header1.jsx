@@ -6,10 +6,12 @@ import Link from "next/link";
 import CartLength from "../../common/CartLength";
 import WishlistLength from "../../common/WishlistLength";
 import { usePathname } from "next/navigation";
+import { useContextElement } from "../../../context/Context";
 
 
 export default function Header1() {
   const pathname = usePathname();
+  const { isLoggedIn } = useContextElement();
 
   return (
     <header style={{ backgroundColor: pathname === "/" ? "" : "white" }} id="header" className="header-default header-absolute">
@@ -66,13 +68,19 @@ export default function Header1() {
                 </a>
               </li>
               <li className="nav-account">
-                <a
-                  href="#login"
-                  data-bs-toggle="modal"
-                  className="nav-icon-item"
-                >
-                  <i className="icon icon-account" />
-                </a>
+                {isLoggedIn ? (
+                  <Link href="/my-account" className="nav-icon-item">
+                    <i className="icon icon-account" />
+                  </Link>
+                ) : (
+                  <a
+                    href="#login"
+                    data-bs-toggle="modal"
+                    className="nav-icon-item"
+                  >
+                    <i className="icon icon-account" />
+                  </a>
+                )}
               </li>
               <li className="nav-wishlist">
                 <Link href={`/wishlist`} className="nav-icon-item">

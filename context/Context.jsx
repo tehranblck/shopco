@@ -16,6 +16,7 @@ export default function Context({ children }) {
   const [quickViewItem, setQuickViewItem] = useState(allProducts[0]);
   const [quickAddItem, setQuickAddItem] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     const subtotal = cartProducts.reduce((accumulator, product) => {
       return accumulator + product.quantity * product.price;
@@ -96,6 +97,12 @@ export default function Context({ children }) {
     if (items?.length) {
       setCartProducts(items);
     }
+
+    // Login durumunu localStorage'dan kontrol et
+    const loginStatus = localStorage.getItem("isLoggedIn");
+    if (loginStatus === "true") {
+      setIsLoggedIn(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -132,6 +139,8 @@ export default function Context({ children }) {
     compareItem,
     setCompareItem,
     updateQuantity,
+    isLoggedIn,
+    setIsLoggedIn
   };
   return (
     <dataContext.Provider value={contextElement}>

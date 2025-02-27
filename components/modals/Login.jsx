@@ -1,7 +1,47 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useContextElement } from "../../context/Context";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { setIsLoggedIn, isLoggedIn } = useContextElement();
+
+  useEffect(() => {
+    // Bootstrap'i dinamik olarak import et
+    if (typeof window !== "undefined") {
+      require("bootstrap/dist/js/bootstrap.bundle.min.js");
+    }
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    // Admin kontrol
+    if (email === "admin" && password === "admin") {
+      // Başarılı giriş
+      alert("Giriş uğurlu oldu!");
+      setIsLoggedIn(true);
+      console.log(isLoggedIn);
+      // Login durumunu localStorage'a kaydet
+      localStorage.setItem("isLoggedIn", "true");
+      // Modal'ı kapat
+      if (typeof window !== "undefined") {
+        const modal = document.getElementById("login");
+        const closeButton = modal.querySelector("[data-bs-dismiss='modal']");
+        closeButton?.click();
+      }
+    } else {
+      // Hatalı giriş
+      setError("Email və ya şifrə yanlışdır!");
+    }
+    setLoading(false);
+  };
+
   return (
     <div
       className="modal modalCentered fade form-sign-in modal-part-content"
@@ -17,21 +57,22 @@ export default function Login() {
             />
           </div>
           <div className="tf-login-form">
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className=""
-              acceptCharset="utf-8"
-            >
+            <form onSubmit={handleSubmit} className="" acceptCharset="utf-8">
+              {error && (
+                <div className="alert alert-danger" role="alert">
+                  {error}
+                </div>
+              )}
               <div className="tf-field style-1">
                 <input
                   className="tf-field-input tf-input"
                   placeholder=" "
-                  type="email"
-                  name=""
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
-                  autoComplete="abc@xyz.com"
                 />
-                <label className="tf-field-label" htmlFor="">
+                <label className="tf-field-label">
                   Email *
                 </label>
               </div>
@@ -40,11 +81,11 @@ export default function Login() {
                   className="tf-field-input tf-input"
                   placeholder=" "
                   type="password"
-                  name=""
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
-                  autoComplete="current-password"
                 />
-                <label className="tf-field-label" htmlFor="">
+                <label className="tf-field-label">
                   Şifrə *
                 </label>
               </div>
@@ -62,8 +103,9 @@ export default function Login() {
                   <button
                     type="submit"
                     className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
+                    disabled={loading}
                   >
-                    <span>Hesaba daxil ol</span>
+                    <span>{loading ? "Giriş edilir..." : "Hesaba daxil ol"}</span>
                   </button>
                 </div>
                 <div className="w-100">

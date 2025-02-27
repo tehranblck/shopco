@@ -1,25 +1,26 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useContextElement } from "../../../context/Context";
 const accountLinks = [
-  { href: "/my-account", label: "Dashboard" },
-  { href: "/my-account-orders", label: "Orders" },
-  { href: "/my-account-address", label: "Addresses" },
-  { href: "/my-account-edit", label: "Account Details" },
-  { href: "/my-account-wishlist", label: "Wishlist" },
+  { href: "/my-account", label: "Mənim Hesabım" },
+  { href: "/my-account-orders", label: "Sifarişlərim" },
+  { href: "/my-account-address", label: "Ünvanlarım" },
+  { href: "/my-account-edit", label: "Hesab Məlumatları" },
+  { href: "/my-account-wishlist", label: "Bəyəndiklərim" },
 ];
 
 export default function DashboardNav() {
   const pathname = usePathname();
+  const { setIsLoggedIn } = useContextElement();
   return (
     <ul className="my-account-nav">
       {accountLinks.map((link, index) => (
         <li key={index}>
           <Link
             href={link.href}
-            className={`my-account-nav-item ${
-              pathname == link.href ? "active" : ""
-            }`}
+            className={`my-account-nav-item ${pathname == link.href ? "active" : ""
+              }`}
           >
             {link.label}
           </Link>
@@ -27,7 +28,7 @@ export default function DashboardNav() {
       ))}
       <li>
         <Link href={`/login`} className="my-account-nav-item">
-          Logout
+          Çıxış
         </Link>
       </li>
     </ul>
