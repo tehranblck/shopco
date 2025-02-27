@@ -2,14 +2,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { tfLoopItems } from "@/data/products";
+import { tfLoopItems } from "../../data/products";
 export default function SearchModal() {
   return (
     <div className="offcanvas offcanvas-end canvas-search" id="canvasSearch">
       <div className="canvas-wrapper">
         <header className="tf-search-head">
           <div className="title fw-5">
-            Search our site
+            Saytda axtarış
             <div className="close">
               <span
                 className="icon-close icon-close-popup"
@@ -26,7 +26,7 @@ export default function SearchModal() {
               <fieldset className="text">
                 <input
                   type="text"
-                  placeholder="Search"
+                  placeholder="Axtarış"
                   className=""
                   name="text"
                   tabIndex={0}
@@ -45,26 +45,26 @@ export default function SearchModal() {
           <div className="tf-search-content">
             <div className="tf-cart-hide-has-results">
               <div className="tf-col-quicklink">
-                <div className="tf-search-content-title fw-5">Quick link</div>
+                <div className="tf-search-content-title fw-5">Sürətli keçidlər</div>
                 <ul className="tf-quicklink-list">
                   <li className="tf-quicklink-item">
                     <Link href={`/shop-default`} className="">
-                      Fashion
+                      Moda
                     </Link>
                   </li>
                   <li className="tf-quicklink-item">
                     <Link href={`/shop-default`} className="">
-                      Men
+                      Kişi
                     </Link>
                   </li>
                   <li className="tf-quicklink-item">
                     <Link href={`/shop-default`} className="">
-                      Women
+                      Qadın
                     </Link>
                   </li>
                   <li className="tf-quicklink-item">
                     <Link href={`/shop-default`} className="">
-                      Accessories
+                      Aksesuarlar
                     </Link>
                   </li>
                 </ul>

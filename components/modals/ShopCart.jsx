@@ -1,6 +1,6 @@
 "use client";
-import { useContextElement } from "@/context/Context";
-import { products1 } from "@/data/products";
+import { useContextElement } from "../../context/Context";
+import { products1 } from "../../data/products";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
@@ -32,7 +32,7 @@ export default function ShopCart() {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="header">
-            <div className="title fw-5">Shopping cart</div>
+            <div className="title fw-5">Alış-veriş səbəti</div>
             <span
               className="icon-close icon-close-popup"
               data-bs-dismiss="modal"
@@ -60,8 +60,8 @@ export default function ShopCart() {
                 </span>
               </div>
               <div className="tf-progress-msg">
-                Buy <span className="price fw-6">$75.00</span> more to enjoy
-                <span className="fw-6">Free Shipping</span>
+                <span className="price fw-6">₼75.00</span> daha alaraq
+                <span className="fw-6">Pulsuz çatdırılma</span> əldə edin
               </div>
             </div>
             <div className="tf-mini-cart-wrap">
@@ -88,9 +88,9 @@ export default function ShopCart() {
                           >
                             {elm.title}
                           </Link>
-                          <div className="meta-variant">Light gray</div>
+                          <div className="meta-variant">Açıq boz</div>
                           <div className="price fw-6">
-                            ${elm.price?.toFixed(2)}
+                            ₼{elm.price?.toFixed(2)}
                           </div>
                           <div className="tf-mini-cart-btns">
                             <div className="wg-quantity small">
@@ -125,7 +125,7 @@ export default function ShopCart() {
                               style={{ cursor: "pointer" }}
                               onClick={() => removeItem(elm.id)}
                             >
-                              Remove
+                              Sil
                             </div>
                           </div>
                         </div>
@@ -136,7 +136,7 @@ export default function ShopCart() {
                       <div className="container">
                         <div className="row align-items-center mt-5 mb-5">
                           <div className="col-12 fs-18">
-                            Your shop cart is empty
+                            Alış-veriş səbətiniz boşdur
                           </div>
                           <div className="col-12 mt-3">
                             <Link
@@ -144,7 +144,7 @@ export default function ShopCart() {
                               className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                               style={{ width: "fit-content" }}
                             >
-                              Explore Products!
+                              Məhsulları Kəşf Et!
                             </Link>
                           </div>
                         </div>
@@ -154,7 +154,7 @@ export default function ShopCart() {
                   <div className="tf-minicart-recommendations">
                     <div className="tf-minicart-recommendations-heading">
                       <div className="tf-minicart-recommendations-title">
-                        You may also like
+                        Bəlkə də bunları bəyəndiniz
                       </div>
                       <div className="sw-dots small style-2 cart-slide-pagination spdsc1" />
                     </div>
@@ -189,7 +189,7 @@ export default function ShopCart() {
                                 {elm.title}
                               </Link>
                               <div className="price">
-                                ${elm.price.toFixed(2)}
+                                ₼{elm.price.toFixed(2)}
                               </div>
                             </div>
                             <div className="tf-minicart-recommendations-item-quickview">
@@ -240,7 +240,7 @@ export default function ShopCart() {
                       <path
                         fillRule="evenodd"
                         clipRule="evenodd"
-                        d="M2.99566 2.73409C2.99566 0.55401 5.42538 -0.746668 7.23916 0.463462L8.50073 1.30516L9.7623 0.463462C11.5761 -0.746668 14.0058 0.55401 14.0058 2.73409V3.24744H14.8225C15.9633 3.24744 16.8881 4.17233 16.8881 5.31312V6.82566C16.8881 7.21396 16.5734 7.52873 16.1851 7.52873H15.8905V15.1877C15.8905 15.1905 15.8905 15.1933 15.8905 15.196C15.886 16.7454 14.6286 18 13.0782 18H3.92323C2.37003 18 1.11091 16.7409 1.11091 15.1877V7.52877H0.81636C0.42806 7.52877 0.113281 7.21399 0.113281 6.82569V5.31316C0.113281 4.17228 1.03812 3.24744 2.179 3.24744H2.99566V2.73409ZM4.40181 3.24744H7.79765V2.52647L6.45874 1.63317C5.57987 1.0468 4.40181 1.67677 4.40181 2.73409V3.24744ZM9.20381 2.52647V3.24744H12.5996V2.73409C12.5996 1.67677 11.4216 1.0468 10.5427 1.63317L9.20381 2.52647ZM2.179 4.6536C1.81472 4.6536 1.51944 4.94888 1.51944 5.31316V6.12261H5.73398L5.734 4.6536H2.179ZM5.73401 7.52877V13.9306C5.73401 14.1806 5.86682 14.4119 6.08281 14.5379C6.29879 14.6639 6.56545 14.6657 6.78312 14.5426L8.50073 13.5715L10.2183 14.5426C10.436 14.6657 10.7027 14.6639 10.9187 14.5379C11.1346 14.4119 11.2674 14.1806 11.2674 13.9306V7.52873H14.4844V15.1603C14.4844 15.1627 14.4843 15.1651 14.4843 15.1675V15.1877C14.4843 15.9643 13.8548 16.5938 13.0782 16.5938H3.92323C3.14663 16.5938 2.51707 15.9643 2.51707 15.1877V7.52877H5.73401ZM15.482 6.12258V5.31312C15.482 4.94891 15.1867 4.6536 14.8225 4.6536H11.2674V6.12258H15.482ZM9.86129 4.6536H7.14017V12.7254L8.15469 12.1518C8.36941 12.0304 8.63204 12.0304 8.84676 12.1518L9.86129 12.7254V4.6536Z"
+                        d="M2.99566 2.73409C2.99566 0.55401 5.42538 -0.746668 7.23916 0.463462L8.50073 1.30516L9.7623 0.463462C11.5761 -0.746668 14.0058 0.55401 14.0058 2.73409V3.24744H14.8225C15.9633 3.24744 16.8881 4.17233 16.8881 5.31312V6.82566C16.8881 7.21396 16.5734 7.52873 16.1851 7.52873H15.8905V15.1877C15.8905 15.1905 15.8905 15.1933 15.8905 15.196C15.886 16.7454 14.6286 18 13.0782 18H3.92323C2.37003 18 1.11091 16.7409 1.11091 15.1877V7.52877H0.81636C0.42806 7.52877 0.113281 7.21399 0.113281 6.82569V5.31316C0.113281 4.17228 1.03812 3.24744 2.179 3.24744H2.99566V2.73409ZM4.40181 3.24744H7.79765V2.52647L6.45874 1.63317C5.57987 1.0468 4.40181 1.67677 4.40181 2.73409V3.24744ZM9.20381 2.52647V3.24744H12.5996V2.73409C12.5996 1.67677 11.4216 1.0468 10.5427 1.63317L9.20381 2.52647ZM2.179 4.6536C1.81472 4.6536 1.51944 4.94888 1.51944 5.31316V6.12261H5.73398L5.734 4.6536H2.179ZM5.73401 7.52877V13.9306C5.73401 14.1806 5.86682 14.4119 6.08281 14.5379C6.29879 14.6639 6.56545 14.6657 6.78312 14.5426L8.50073 13.5715L10.2183 14.5426C10.436 14.6657 10.7027 14.6639 10.9187 14.5379C11.1346 14.4119 11.2674 14.1806 11.2674 13.9306V7.52873H14.4844V15.1603C14.4844 15.1627 14.4843 15.1651 14.4843 15.1675V15.1877C14.4843 15.9643 13.8548 16.5938 13.0782 16.5938H3.92323C3.14663 16.5938 2.51707 15.9643 2.51707 15.1877V7.52877H5.73401ZM15.482 6.12258V5.31312C15.482 4.94891 15.1867 4.6536 14.8225 4.6536H11.2674V6.12258H15.482ZM13.8138 6.2048H10.1856V16.9672L11.5383 16.2024C11.8246 16.0405 12.1748 16.0405 12.461 16.2024L13.8138 16.9672V6.2048Z"
                       />
                     </svg>
                   </div>
@@ -265,13 +265,13 @@ export default function ShopCart() {
                 </div>
                 <div className="tf-mini-cart-bottom-wrap">
                   <div className="tf-cart-totals-discounts">
-                    <div className="tf-cart-total">Subtotal</div>
+                    <div className="tf-cart-total">Cəm</div>
                     <div className="tf-totals-total-value fw-6">
-                      ${totalPrice.toFixed(2)} USD
+                      ₼{totalPrice.toFixed(2)} AZN
                     </div>
                   </div>
                   <div className="tf-cart-tax">
-                    Taxes and <a href="#">shipping</a> calculated at checkout
+                    Vergilər və <a href="#">çatdırılma</a> ödəmə zamanı hesablanacaq
                   </div>
                   <div className="tf-mini-cart-line" />
                   <div className="tf-cart-checkbox">
@@ -287,9 +287,9 @@ export default function ShopCart() {
                       </div>
                     </div>
                     <label htmlFor="CartDrawer-Form_agree">
-                      I agree with the
-                      <a href="#" title="Terms of Service">
-                        terms and conditions
+                      Mən razıyam
+                      <a href="#" title="Xidmət Şərtləri">
+                        xidmət şərtləri
                       </a>
                     </label>
                   </div>
@@ -298,13 +298,13 @@ export default function ShopCart() {
                       href={`/view-cart`}
                       className="tf-btn btn-outline radius-3 link w-100 justify-content-center"
                     >
-                      View cart
+                      Səbəti gör
                     </Link>
                     <Link
                       href={`/checkout`}
                       className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                     >
-                      <span>Check out</span>
+                      <span>Ödənişi tamamla</span>
                     </Link>
                   </div>
                 </div>
@@ -331,12 +331,12 @@ export default function ShopCart() {
                         <path d="M15.3882 10.0971C14.5724 9.28136 13.2452 9.28132 12.43 10.0965L8.60127 13.9168C8.51997 13.9979 8.45997 14.0979 8.42658 14.2078L7.59276 16.9528C7.55646 17.0723 7.55292 17.1993 7.58249 17.3207C7.61206 17.442 7.67367 17.5531 7.76087 17.6425C7.84807 17.7319 7.95768 17.7962 8.07823 17.8288C8.19879 17.8613 8.32587 17.8609 8.44621 17.8276L11.261 17.0479C11.3769 17.0158 11.4824 16.9543 11.5675 16.8694L15.3882 13.0559C16.2039 12.2401 16.2039 10.9129 15.3882 10.0971ZM10.712 15.7527L9.29586 16.145L9.71028 14.7806L12.2937 12.2029L13.2801 13.1893L10.712 15.7527ZM14.4025 12.0692L14.2673 12.204L13.2811 11.2178L13.4157 11.0834C13.6876 10.8115 14.1301 10.8115 14.402 11.0834C14.6739 11.3553 14.6739 11.7977 14.4025 12.0692Z" />
                       </svg>
                     </div>
-                    <span>Add Order Note</span>
+                    <span>Əmr qeydi əlavə et</span>
                   </label>
                   <textarea
                     name="note"
                     id="Cart-note"
-                    placeholder="How can we help you?"
+                    placeholder="Sizə necə kömək edə bilərik?"
                     defaultValue={""}
                   />
                   <div className="tf-cart-tool-btns justify-content-center">
@@ -346,7 +346,7 @@ export default function ShopCart() {
                         addNoteRef.current.classList.remove("open")
                       }
                     >
-                      Close
+                      Bağla
                     </div>
                   </div>
                 </div>
@@ -376,14 +376,14 @@ export default function ShopCart() {
                           <path
                             fillRule="evenodd"
                             clipRule="evenodd"
-                            d="M4.65957 3.64545C4.65957 0.73868 7.89921 -0.995558 10.3176 0.617949L11.9997 1.74021L13.6818 0.617949C16.1001 -0.995558 19.3398 0.73868 19.3398 3.64545V4.32992H20.4286C21.9498 4.32992 23.1829 5.56311 23.1829 7.08416V9.10087C23.1829 9.61861 22.7632 10.0383 22.2454 10.0383H21.8528V20.2502C21.8528 20.254 21.8527 20.2577 21.8527 20.2614C21.8467 22.3272 20.1702 24 18.103 24H5.89634C3.82541 24 2.14658 22.3212 2.14658 20.2502V10.0384H1.75384C1.23611 10.0384 0.816406 9.61865 0.816406 9.10092V7.08421C0.816406 5.56304 2.04953 4.32992 3.57069 4.32992H4.65957V3.64545ZM6.53445 4.32992H11.0622V3.36863L9.27702 2.17757C8.10519 1.39573 6.53445 2.2357 6.53445 3.64545V4.32992ZM12.9371 3.36863V4.32992H17.4649V3.64545C17.4649 2.2357 15.8942 1.39573 14.7223 2.17756L12.9371 3.36863ZM3.57069 6.2048C3.08499 6.2048 2.69128 6.59851 2.69128 7.08421V8.16348H8.31067L8.3107 6.2048H3.57069ZM8.31071 10.0384V18.5741C8.31071 18.9075 8.48779 19.2158 8.77577 19.3838C9.06376 19.5518 9.4193 19.5542 9.70953 19.3901L11.9997 18.0953L14.2898 19.3901C14.58 19.5542 14.9356 19.5518 15.2236 19.3838C15.5115 19.2158 15.6886 18.9075 15.6886 18.5741V10.0383H19.9779V20.2137C19.9778 20.2169 19.9778 20.2201 19.9778 20.2233V20.2502C19.9778 21.2857 19.1384 22.1251 18.103 22.1251H5.89634C4.86088 22.1251 4.02146 21.2857 4.02146 20.2502V10.0384H8.31071ZM21.308 8.16344V7.08416C21.308 6.59854 20.9143 6.2048 20.4286 6.2048H15.6886V8.16344H21.308ZM13.8138 6.2048H10.1856V16.9672L11.5383 16.2024C11.8246 16.0405 12.1748 16.0405 12.461 16.2024L13.8138 16.9672V6.2048Z"
+                            d="M4.65957 3.64545C4.65957 0.73868 7.89921 -0.995558 10.3176 0.617949L11.9997 1.74021L13.6818 0.617949C16.1001 -0.995558 19.3398 0.73868 19.3398 3.64545V4.32992H20.4286C21.9498 4.32992 23.1829 5.56311 23.1829 7.08416V9.10087C23.1829 9.61861 22.7632 10.0383 22.2454 10.0383H21.8528V20.2502C21.8528 20.254 21.8527 20.2577 21.8527 20.2614C21.8467 22.3272 20.1702 24 18.103 24H5.89634C3.82541 24 2.14658 22.3212 2.14658 20.2502V10.0384H1.75384C1.23611 10.0384 0.816406 9.61865 0.816406 9.10092V7.08421C0.816406 5.56304 2.04953 4.32992 3.57069 4.32992H4.65957V3.64545ZM6.53445 4.32992H11.0622V2.52647L6.45874 1.63317C5.57987 1.0468 6.53445 2.2357 6.53445 3.64545V4.32992ZM9.20381 2.52647V3.24744H12.5996V2.73409C12.5996 1.67677 11.4216 1.0468 10.5427 1.63317L9.20381 2.52647ZM2.179 4.6536C1.81472 4.6536 1.51944 4.94888 1.51944 5.31316V6.12261H5.73398L5.734 4.6536H2.179ZM5.73401 7.52877V13.9306C5.73401 14.1806 5.86682 14.4119 6.08281 14.5379C6.29879 14.6639 6.56545 14.6657 6.78312 14.5426L8.50073 13.5715L10.2183 14.5426C10.436 14.6657 10.7027 14.6639 10.9187 14.5379C11.1346 14.4119 11.2674 14.1806 11.2674 13.9306V7.52873H14.4844V15.1603C14.4844 15.1627 14.4843 15.1651 14.4843 15.1675V15.1877C14.4843 15.9643 13.8548 16.5938 13.0782 16.5938H3.92323C3.14663 16.5938 2.51707 15.9643 2.51707 15.1877V7.52877H5.73401ZM15.482 6.12258V5.31312C15.482 4.94891 15.1867 4.6536 14.8225 4.6536H11.2674V6.12258H15.482ZM13.8138 6.2048H10.1856V16.9672L11.5383 16.2024C11.8246 16.0405 12.1748 16.0405 12.461 16.2024L13.8138 16.9672V6.2048Z"
                           />
                         </svg>
                       </div>
                       <div className="tf-gift-wrap-infos">
-                        <p>Do you want a gift wrap?</p>
-                        Only
-                        <span className="price fw-6">$5.00</span>
+                        <p>Hədiyyə qablaşdırması istəyirsiniz?</p>
+                        Yalnız
+                        <span className="price fw-6">₼5.00</span>
                       </div>
                     </div>
                     <div className="tf-cart-tool-btns">
@@ -391,7 +391,7 @@ export default function ShopCart() {
                         type="submit"
                         className="tf-btn fw-6 w-100 justify-content-center btn-fill animate-hover-btn radius-3"
                       >
-                        <span>Add a gift wrap</span>
+                        <span>Hədiyyə qablaşdırması əlavə et</span>
                       </button>
                       <div
                         className="tf-mini-cart-tool-primary text-center w-100 fw-6 tf-mini-cart-tool-close"
@@ -399,7 +399,7 @@ export default function ShopCart() {
                           addGiftRef.current.classList.remove("open")
                         }
                       >
-                        Cancel
+                        İmtina et
                       </div>
                     </div>
                   </div>
@@ -430,10 +430,10 @@ export default function ShopCart() {
                         />
                       </svg>
                     </div>
-                    <span className="fw-6">Estimate Shipping</span>
+                    <span className="fw-6">Çatdırılmanı təxmin et</span>
                   </div>
                   <div className="field">
-                    <p>Country</p>
+                    <p>Ölkə</p>
                     <select
                       className="tf-select w-100"
                       id="ShippingCountry_CartDrawer-Form"
@@ -447,135 +447,73 @@ export default function ShopCart() {
                         value="Australia"
                         data-provinces="[['Australian Capital Territory','Australian Capital Territory'],['New South Wales','New South Wales'],['Northern Territory','Northern Territory'],['Queensland','Queensland'],['South Australia','South Australia'],['Tasmania','Tasmania'],['Victoria','Victoria'],['Western Australia','Western Australia']]"
                       >
-                        Australia
+                        Avstraliya
                       </option>
                       <option value="Austria" data-provinces="[]">
-                        Austria
+                        Avstriya
                       </option>
                       <option value="Belgium" data-provinces="[]">
-                        Belgium
+                        Belçika
                       </option>
                       <option
                         value="Canada"
                         data-provinces="[['Alberta','Alberta'],['British Columbia','British Columbia'],['Manitoba','Manitoba'],['New Brunswick','New Brunswick'],['Newfoundland and Labrador','Newfoundland and Labrador'],['Northwest Territories','Northwest Territories'],['Nova Scotia','Nova Scotia'],['Nunavut','Nunavut'],['Ontario','Ontario'],['Prince Edward Island','Prince Edward Island'],['Quebec','Quebec'],['Saskatchewan','Saskatchewan'],['Yukon','Yukon']]"
                       >
-                        Canada
+                        Kanada
                       </option>
                       <option value="Czech Republic" data-provinces="[]">
-                        Czechia
+                        Çexiya
                       </option>
                       <option value="Denmark" data-provinces="[]">
-                        Denmark
+                        Danimarka
                       </option>
                       <option value="Finland" data-provinces="[]">
-                        Finland
+                        Finlandiya
                       </option>
                       <option value="France" data-provinces="[]">
-                        France
+                        Fransa
                       </option>
                       <option value="Germany" data-provinces="[]">
-                        Germany
+                        Almaniya
                       </option>
                       <option
                         value="Hong Kong"
                         data-provinces="[['Hong Kong Island','Hong Kong Island'],['Kowloon','Kowloon'],['New Territories','New Territories']]"
                       >
-                        Hong Kong SAR
+                        Honq Konq SAR
                       </option>
                       <option
                         value="Ireland"
                         data-provinces="[['Carlow','Carlow'],['Cavan','Cavan'],['Clare','Clare'],['Cork','Cork'],['Donegal','Donegal'],['Dublin','Dublin'],['Galway','Galway'],['Kerry','Kerry'],['Kildare','Kildare'],['Kilkenny','Kilkenny'],['Laois','Laois'],['Leitrim','Leitrim'],['Limerick','Limerick'],['Longford','Longford'],['Louth','Louth'],['Mayo','Mayo'],['Meath','Meath'],['Monaghan','Monaghan'],['Offaly','Offaly'],['Roscommon','Roscommon'],['Sligo','Sligo'],['Tipperary','Tipperary'],['Waterford','Waterford'],['Westmeath','Westmeath'],['Wexford','Wexford'],['Wicklow','Wicklow']]"
                       >
-                        Ireland
+                        İrlandiya
                       </option>
                       <option value="Israel" data-provinces="[]">
-                        Israel
+                        İsrail
                       </option>
                       <option
                         value="Italy"
                         data-provinces="[['Agrigento','Agrigento'],['Alessandria','Alessandria'],['Ancona','Ancona'],['Aosta','Aosta Valley'],['Arezzo','Arezzo'],['Ascoli Piceno','Ascoli Piceno'],['Asti','Asti'],['Avellino','Avellino'],['Bari','Bari'],['Barletta-Andria-Trani','Barletta-Andria-Trani'],['Belluno','Belluno'],['Benevento','Benevento'],['Bergamo','Bergamo'],['Biella','Biella'],['Bologna','Bologna'],['Bolzano','South Tyrol'],['Brescia','Brescia'],['Brindisi','Brindisi'],['Cagliari','Cagliari'],['Caltanissetta','Caltanissetta'],['Campobasso','Campobasso'],['Carbonia-Iglesias','Carbonia-Iglesias'],['Caserta','Caserta'],['Catania','Catania'],['Catanzaro','Catanzaro'],['Chieti','Chieti'],['Como','Como'],['Cosenza','Cosenza'],['Cremona','Cremona'],['Crotone','Crotone'],['Cuneo','Cuneo'],['Enna','Enna'],['Fermo','Fermo'],['Ferrara','Ferrara'],['Firenze','Florence'],['Foggia','Foggia'],['Forlì-Cesena','Forlì-Cesena'],['Frosinone','Frosinone'],['Genova','Genoa'],['Gorizia','Gorizia'],['Grosseto','Grosseto'],['Imperia','Imperia'],['Isernia','Isernia'],['L'Aquila','L’Aquila'],['La Spezia','La Spezia'],['Latina','Latina'],['Lecce','Lecce'],['Lecco','Lecco'],['Livorno','Livorno'],['Lodi','Lodi'],['Lucca','Lucca'],['Macerata','Macerata'],['Mantova','Mantua'],['Massa-Carrara','Massa and Carrara'],['Matera','Matera'],['Medio Campidano','Medio Campidano'],['Messina','Messina'],['Milano','Milan'],['Modena','Modena'],['Monza e Brianza','Monza and Brianza'],['Napoli','Naples'],['Novara','Novara'],['Nuoro','Nuoro'],['Ogliastra','Ogliastra'],['Olbia-Tempio','Olbia-Tempio'],['Oristano','Oristano'],['Padova','Padua'],['Palermo','Palermo'],['Parma','Parma'],['Pavia','Pavia'],['Perugia','Perugia'],['Pesaro e Urbino','Pesaro and Urbino'],['Pescara','Pescara'],['Piacenza','Piacenza'],['Pisa','Pisa'],['Pistoia','Pistoia'],['Pordenone','Pordenone'],['Potenza','Potenza'],['Prato','Prato'],['Ragusa','Ragusa'],['Ravenna','Ravenna'],['Reggio Calabria','Reggio Calabria'],['Reggio Emilia','Reggio Emilia'],['Rieti','Rieti'],['Rimini','Rimini'],['Roma','Rome'],['Rovigo','Rovigo'],['Salerno','Salerno'],['Sassari','Sassari'],['Savona','Savona'],['Siena','Siena'],['Siracusa','Syracuse'],['Sondrio','Sondrio'],['Taranto','Taranto'],['Teramo','Teramo'],['Terni','Terni'],['Torino','Turin'],['Trapani','Trapani'],['Trento','Trentino'],['Treviso','Treviso'],['Trieste','Trieste'],['Udine','Udine'],['Varese','Varese'],['Venezia','Venice'],['Verbano-Cusio-Ossola','Verbano-Cusio-Ossola'],['Vercelli','Vercelli'],['Verona','Verona'],['Vibo Valentia','Vibo Valentia'],['Vicenza','Vicenza'],['Viterbo','Viterbo']]"
                       >
-                        Italy
+                        İtaliya
                       </option>
                       <option
                         value="Japan"
                         data-provinces="[['Aichi','Aichi'],['Akita','Akita'],['Aomori','Aomori'],['Chiba','Chiba'],['Ehime','Ehime'],['Fukui','Fukui'],['Fukuoka','Fukuoka'],['Fukushima','Fukushima'],['Gifu','Gifu'],['Gunma','Gunma'],['Hiroshima','Hiroshima'],['Hokkaidō','Hokkaido'],['Hyōgo','Hyogo'],['Ibaraki','Ibaraki'],['Ishikawa','Ishikawa'],['Iwate','Iwate'],['Kagawa','Kagawa'],['Kagoshima','Kagoshima'],['Kanagawa','Kanagawa'],['Kumamoto','Kumamoto'],['Kyōto','Kyoto'],['Kōchi','Kochi'],['Mie','Mie'],['Miyagi','Miyagi'],['Miyazaki','Miyazaki'],['Nagano','Nagano'],['Nagasaki','Nagasaki'],['Nara','Nara'],['Niigata','Niigata'],['Okayama','Okayama'],['Okinawa','Okinawa'],['Saga','Saga'],['Saitama','Saitama'],['Shiga','Shiga'],['Shimane','Shimane'],['Shizuoka','Shizuoka'],['Tochigi','Tochigi'],['Tokushima','Tokushima'],['Tottori','Tottori'],['Toyama','Toyama'],['Tōkyō','Tokyo'],['Wakayama','Wakayama'],['Yamagata','Yamagata'],['Yamaguchi','Yamaguchi'],['Yamanashi','Yamanashi'],['Ōita','Oita'],['Ōsaka','Osaka']]"
                       >
-                        Japan
+                        Yaponya
                       </option>
-                      <option
-                        value="Malaysia"
-                        data-provinces="[['Johor','Johor'],['Kedah','Kedah'],['Kelantan','Kelantan'],['Kuala Lumpur','Kuala Lumpur'],['Labuan','Labuan'],['Melaka','Malacca'],['Negeri Sembilan','Negeri Sembilan'],['Pahang','Pahang'],['Penang','Penang'],['Perak','Perak'],['Perlis','Perlis'],['Putrajaya','Putrajaya'],['Sabah','Sabah'],['Sarawak','Sarawak'],['Selangor','Selangor'],['Terengganu','Terengganu']]"
+                      <option value="Malaysia" data-provinces="[['Johor','Johor'],['Kedah','Kedah'],['Kelantan','Kelantan'],['Kuala Lumpur','Kuala Lumpur'],['Labuan','Labuan'],['Melaka','Malacca'],['Negeri Sembilan','Negeri Sembilan'],['Pahang','Pahang'],['Penang','Penang'],['Perak','Perak'],['Perlis','Perlis'],['Putrajaya','Putrajaya'],['Sabah','Sabah'],['Sarawak','Sarawak'],['Selangor','Selangor'],['Terengganu','Terengganu']]"
                       >
-                        Malaysia
+                        Malayziya
                       </option>
                       <option value="Netherlands" data-provinces="[]">
-                        Netherlands
-                      </option>
-                      <option
-                        value="New Zealand"
-                        data-provinces="[['Auckland','Auckland'],['Bay of Plenty','Bay of Plenty'],['Canterbury','Canterbury'],['Chatham Islands','Chatham Islands'],['Gisborne','Gisborne'],['Hawke's Bay','Hawke’s Bay'],['Manawatu-Wanganui','Manawatū-Whanganui'],['Marlborough','Marlborough'],['Nelson','Nelson'],['Northland','Northland'],['Otago','Otago'],['Southland','Southland'],['Taranaki','Taranaki'],['Tasman','Tasman'],['Waikato','Waikato'],['Wellington','Wellington'],['West Coast','West Coast']]"
-                      >
-                        New Zealand
-                      </option>
-                      <option value="Norway" data-provinces="[]">
-                        Norway
-                      </option>
-                      <option value="Poland" data-provinces="[]">
-                        Poland
-                      </option>
-                      <option
-                        value="Portugal"
-                        data-provinces="[['Aveiro','Aveiro'],['Açores','Azores'],['Beja','Beja'],['Braga','Braga'],['Bragança','Bragança'],['Castelo Branco','Castelo Branco'],['Coimbra','Coimbra'],['Faro','Faro'],['Guarda','Guarda'],['Leiria','Leiria'],['Lisboa','Lisbon'],['Madeira','Madeira'],['Portalegre','Portalegre'],['Porto','Porto'],['Santarém','Santarém'],['Setúbal','Setúbal'],['Viana do Castelo','Viana do Castelo'],['Vila Real','Vila Real'],['Viseu','Viseu'],['Évora','Évora']]"
-                      >
-                        Portugal
-                      </option>
-                      <option value="Singapore" data-provinces="[]">
-                        Singapore
-                      </option>
-                      <option
-                        value="South Korea"
-                        data-provinces="[['Busan','Busan'],['Chungbuk','North Chungcheong'],['Chungnam','South Chungcheong'],['Daegu','Daegu'],['Daejeon','Daejeon'],['Gangwon','Gangwon'],['Gwangju','Gwangju City'],['Gyeongbuk','North Gyeongsang'],['Gyeonggi','Gyeonggi'],['Gyeongnam','South Gyeongsang'],['Incheon','Incheon'],['Jeju','Jeju'],['Jeonbuk','North Jeolla'],['Jeonnam','South Jeolla'],['Sejong','Sejong'],['Seoul','Seoul'],['Ulsan','Ulsan']]"
-                      >
-                        South Korea
-                      </option>
-                      <option
-                        value="Spain"
-                        data-provinces="[['A Coruña','A Coruña'],['Albacete','Albacete'],['Alicante','Alicante'],['Almería','Almería'],['Asturias','Asturias Province'],['Badajoz','Badajoz'],['Balears','Balears Province'],['Barcelona','Barcelona'],['Burgos','Burgos'],['Cantabria','Cantabria Province'],['Castellón','Castellón'],['Ceuta','Ceuta'],['Ciudad Real','Ciudad Real'],['Cuenca','Cuenca'],['Cáceres','Cáceres'],['Cádiz','Cádiz'],['Córdoba','Córdoba'],['Girona','Girona'],['Granada','Granada'],['Guadalajara','Guadalajara'],['Guipúzcoa','Gipuzkoa'],['Huelva','Huelva'],['Huesca','Huesca'],['Jaén','Jaén'],['La Rioja','La Rioja Province'],['Las Palmas','Las Palmas'],['León','León'],['Lleida','Lleida'],['Lugo','Lugo'],['Madrid','Madrid Province'],['Melilla','Melilla'],['Murcia','Murcia'],['Málaga','Málaga'],['Navarra','Navarra'],['Ourense','Ourense'],['Palencia','Palencia'],['Pontevedra','Pontevedra'],['Salamanca','Salamanca'],['Santa Cruz de Tenerife','Santa Cruz de Tenerife'],['Segovia','Segovia'],['Sevilla','Seville'],['Soria','Soria'],['Tarragona','Tarragona'],['Teruel','Teruel'],['Toledo','Toledo'],['Valencia','Valencia'],['Valladolid','Valladolid'],['Vizcaya','Biscay'],['Zamora','Zamora'],['Zaragoza','Zaragoza'],['Álava','Álava'],['Ávila','Ávila']]"
-                      >
-                        Spain
-                      </option>
-                      <option value="Sweden" data-provinces="[]">
-                        Sweden
-                      </option>
-                      <option value="Switzerland" data-provinces="[]">
-                        Switzerland
-                      </option>
-                      <option
-                        value="United Arab Emirates"
-                        data-provinces="[['Abu Dhabi','Abu Dhabi'],['Ajman','Ajman'],['Dubai','Dubai'],['Fujairah','Fujairah'],['Ras al-Khaimah','Ras al-Khaimah'],['Sharjah','Sharjah'],['Umm al-Quwain','Umm al-Quwain']]"
-                      >
-                        United Arab Emirates
-                      </option>
-                      <option
-                        value="United Kingdom"
-                        data-provinces="[['British Forces','British Forces'],['England','England'],['Northern Ireland','Northern Ireland'],['Scotland','Scotland'],['Wales','Wales']]"
-                      >
-                        United Kingdom
-                      </option>
-                      <option
-                        value="United States"
-                        data-provinces="[['Alabama','Alabama'],['Alaska','Alaska'],['American Samoa','American Samoa'],['Arizona','Arizona'],['Arkansas','Arkansas'],['Armed Forces Americas','Armed Forces Americas'],['Armed Forces Europe','Armed Forces Europe'],['Armed Forces Pacific','Armed Forces Pacific'],['California','California'],['Colorado','Colorado'],['Connecticut','Connecticut'],['Delaware','Delaware'],['District of Columbia','Washington DC'],['Federated States of Micronesia','Micronesia'],['Florida','Florida'],['Georgia','Georgia'],['Guam','Guam'],['Hawaii','Hawaii'],['Idaho','Idaho'],['Illinois','Illinois'],['Indiana','Indiana'],['Iowa','Iowa'],['Kansas','Kansas'],['Kentucky','Kentucky'],['Louisiana','Louisiana'],['Maine','Maine'],['Marshall Islands','Marshall Islands'],['Maryland','Maryland'],['Massachusetts','Massachusetts'],['Michigan','Michigan'],['Minnesota','Minnesota'],['Mississippi','Mississippi'],['Missouri','Missouri'],['Montana','Montana'],['Nebraska','Nebraska'],['Nevada','Nevada'],['New Hampshire','New Hampshire'],['New Jersey','New Jersey'],['New Mexico','New Mexico'],['New York','New York'],['North Carolina','North Carolina'],['North Dakota','North Dakota'],['Northern Mariana Islands','Northern Mariana Islands'],['Ohio','Ohio'],['Oklahoma','Oklahoma'],['Oregon','Oregon'],['Palau','Palau'],['Pennsylvania','Pennsylvania'],['Puerto Rico','Puerto Rico'],['Rhode Island','Rhode Island'],['South Carolina','South Carolina'],['South Dakota','South Dakota'],['Tennessee','Tennessee'],['Texas','Texas'],['Utah','Utah'],['Vermont','Vermont'],['Virgin Islands','U.S. Virgin Islands'],['Virginia','Virginia'],['Washington','Washington'],['West Virginia','West Virginia'],['Wisconsin','Wisconsin'],['Wyoming','Wyoming']]"
-                      >
-                        United States
-                      </option>
-                      <option value="Vietnam" data-provinces="[]">
-                        Vietnam
+                        Niderland
                       </option>
                     </select>
                   </div>
                   <div className="field">
-                    <p>Zip code</p>
+                    <p>Poçt kodu</p>
                     <input type="text" name="text" placeholder="" />
                   </div>
                   <div className="tf-cart-tool-btns">
@@ -583,7 +521,7 @@ export default function ShopCart() {
                       href="#"
                       className="tf-btn fw-6 justify-content-center btn-fill w-100 animate-hover-btn radius-3"
                     >
-                      <span>Estimate</span>
+                      <span>Hesablama</span>
                     </a>
                     <div
                       className="tf-mini-cart-tool-primary text-center fw-6 w-100 tf-mini-cart-tool-close"
@@ -591,7 +529,7 @@ export default function ShopCart() {
                         addShipingRef.current.classList.remove("open")
                       }
                     >
-                      Cancel
+                      İmtina et
                     </div>
                   </div>
                 </div>

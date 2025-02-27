@@ -56,7 +56,7 @@ export default function QuickAdd() {
             <div className="tf-product-info-variant-picker mb_15">
               <div className="variant-picker-item">
                 <div className="variant-picker-label">
-                  Color:
+                  Rəng:
                   <span className="fw-6 variant-picker-label-value">
                     {currentColor.value}
                   </span>
@@ -84,7 +84,7 @@ export default function QuickAdd() {
               </div>
               <div className="variant-picker-item">
                 <div className="variant-picker-label">
-                  Size:{" "}
+                  Ölçü:{" "}
                   <span className="fw-6 variant-picker-label-value">
                     {" "}
                     {currentSize.value}
@@ -112,7 +112,7 @@ export default function QuickAdd() {
               </div>
             </div>
             <div className="tf-product-info-quantity mb_15">
-              <div className="quantity-title fw-6">Quantity</div>
+              <div className="quantity-title fw-6">Miqdar</div>
               <Quantity />
             </div>
             <div className="tf-product-info-buy-button">
@@ -123,28 +123,16 @@ export default function QuickAdd() {
                 >
                   <span>
                     {isAddedToCartProducts(item.id)
-                      ? "Already Added - "
-                      : "Add to cart - "}
+                      ? "Artıq əlavə edildi - "
+                      : "Səbətə əlavə et - "}
                   </span>
                   <span className="tf-qty-price">${item.price.toFixed(2)}</span>
                 </a>
-                <div className="tf-product-btn-wishlist btn-icon-action">
-                  <i className="icon-heart" />
-                  <i className="icon-delete" />
-                </div>
-                <a
-                  href="#compare"
-                  data-bs-toggle="offcanvas"
-                  aria-controls="offcanvasLeft"
-                  onClick={() => addToCompareItem(item.id)}
-                  className="tf-product-btn-wishlist box-icon bg_white compare btn-icon-action"
-                >
-                  <span className="icon icon-compare" />
-                  <span className="icon icon-check" />
-                </a>
+
+
                 <div className="w-100">
                   <a href="#" className="btns-full">
-                    Buy with
+                    Alışveriş et
                     <Image
                       alt="image"
                       src="/images/payments/paypal.png"
@@ -153,7 +141,7 @@ export default function QuickAdd() {
                     />
                   </a>
                   <a href="#" className="payment-more-option">
-                    More payment options
+                    Digər ödəmə seçimləri
                   </a>
                 </div>
               </form>

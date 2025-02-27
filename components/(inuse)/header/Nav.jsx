@@ -59,7 +59,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
       </li>
       <li className="menu-item">
         <Link
-          href="/about-us"
+          href="/haqqimizda"
           className={`item-link ${Linkfs} ${textColor} 
            `}
         >
@@ -69,7 +69,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
       </li>
       <li className="menu-item">
         <Link
-          href="/shop-default"
+          href="/magaza-umumi"
           className={`item-link ${Linkfs} ${textColor}`}
         >
           Mağazamız
@@ -96,7 +96,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
       </li>
       <li className="menu-item position-relative">
         <Link
-          href="contact-2"
+          href="/elaqe"
           className={`item-link ${Linkfs} ${textColor}`}
         >
           Əlaqə

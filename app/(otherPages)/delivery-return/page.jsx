@@ -6,9 +6,9 @@ export default function page() {
     <>
       <>
         {/* page-title */}
-        <div className="tf-page-title style-2">
+        <div style={{ marginTop: "90px" }} className="tf-page-title style-2">
           <div className="container-full">
-            <div className="heading text-center">Delivery Return</div>
+            <div className="heading text-center">Çatdırılma və qaytarılma</div>
           </div>
         </div>
         {/* /page-title */}
@@ -17,38 +17,33 @@ export default function page() {
           <div className="container">
             <div className="tf-main-area-page tf-page-delivery">
               <div className="box">
-                <h4>Delivery</h4>
+                <h4>Çatdırılma</h4>
                 <ul className="tag-list">
-                  <li>All orders shipped with UPS Express.</li>
-                  <li>Always free shipping for orders over US $250.</li>
-                  <li>All orders are shipped with a UPS tracking number.</li>
+                  <li>Bütün sifarişler UPS Express ilə çatdırılır.</li>
+                  <li>Ümumiyyətlə 250 AZN-dən yuxarı sifarişlər üçün pulsuz çatdırılma.</li>
+                  <li>Bütün sifarişlər UPS tracking nömrəsi ilə çatdırılır.</li>
                 </ul>
               </div>
               <div className="box">
-                <h4>Returns</h4>
+                <h4>Qaytarılma</h4>
                 <ul className="tag-list">
                   <li>
-                    Items returned within 14 days of their original shipment
-                    date in same as new condition will be eligible for a full
-                    refund or store credit.
+                    Sifarişinizin göndərilməsi 14 gündən sonra qaytarılır.
+                    tək şəkildə qaytarılır.
                   </li>
                   <li>
-                    Refunds will be charged back to the original form of payment
-                    used for purchase.
+                    Qaytarılma məbləği ödənişinizin orijinal formasından geri qaytarılır.
                   </li>
                   <li>
-                    Customer is responsible for shipping charges when making
-                    returns and shipping/handling fees of original purchase is
-                    non-refundable.t
+                    Müştəri qaytarılma üçün çatdırılma xərcləri ödənir.
                   </li>
-                  <li>All sale items are final purchases.</li>
+                  <li>Satılan məhsullar final alış-satış məbləğidir.</li>
                 </ul>
               </div>
               <div className="box">
                 <h4>Help</h4>
                 <p>
-                  Give us a shout if you have any other questions and/or
-                  concerns.
+                  Əgər sizin ilə əla bağlı soru qoymaq istəyirsinizsə, bizə bir şəkildə qoşulun.
                 </p>
                 <p className="text_black-2">Email: contact@domain.com</p>
                 <p className="text_black-2">Phone: +1 (23) 456 789</p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { collectionSlides2 } from "@/data/kateqoriyalar";
+import { collectionSlides2 } from "@/data/categories";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
 import Image from "next/image";

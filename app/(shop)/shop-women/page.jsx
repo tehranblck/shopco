@@ -8,11 +8,11 @@ export const metadata = {
 export default function page() {
   return (
     <>
-      <div className="tf-page-title">
+      <div style={{ marginTop: "90px" }} className="tf-page-title">
         <div className="container-full">
-          <div className="heading text-center">Shop Women</div>
+          <div className="heading text-center">Qadınlar üçün</div>
           <p className="text-center text-2 text_black-2 mt_5">
-            Shop through our latest selection of Fashion
+            Ən yaxşı qadın geyimləri
           </p>
         </div>
       </div>

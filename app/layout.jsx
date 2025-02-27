@@ -13,12 +13,13 @@ import ScrollTop from "../components/common/ScrollTop";
 import Topbar1 from "../components/(inuse)/header/Topbar1";
 import Footer1 from "../components/(inuse)/footer/Footer1";
 import Header1 from "../components/(inuse)/header/Header1";
-
-
-
-
-
-
+import ShopCart from "../components/modals/ShopCart";
+import Login from "../components/modals/Login";
+import Register from "../components/modals/Register";
+import ResetPass from "../components/modals/ResetPass";
+import SearchModal from "../components/modals/SearchModal";
+import QuickAdd from "../components/modals/QuickAdd";
+import MobileMenu from "../components/modals/MobileMenu";
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   useEffect(() => {
@@ -156,21 +157,27 @@ export default function RootLayout({ children }) {
             {children}
             <Footer1 />
           </div>
+          <ShopCart />
+          <Login />
+          <Register />
+          <ResetPass />
+          <SearchModal />
+          <QuickAdd />
+          <MobileMenu />
           { /*  <HomesModal /> <QuickView />*/}
-          {/*<QuickAdd />*/}
+
           {/* <ProductSidebar />
           <Compare />
-          <ShopCart />
+       
           <AskQuestion />
           <BlogSidebar />
           <ColorCompare />
           <DeliveryReturn />
           <FindSize />
-          <Login />
-          <MobileMenu />
-          <Register />
-          <ResetPass />
-          <SearchModal />
+         
+    
+       
+     
           <ToolbarBottom />
           <ToolbarShop />}
           {/* <NewsletterModal />

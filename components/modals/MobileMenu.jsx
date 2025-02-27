@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import LanguageSelect from "../common/LanguageSelect";
-import CurrencySelect from "../common/CurrencySelect";
-import { navItems } from "@/data/menu";
+import { navItems } from "../../data/menu";
 import { usePathname } from "next/navigation";
 export default function MobileMenu() {
   const pathname = usePathname();
@@ -45,116 +43,70 @@ export default function MobileMenu() {
           <ul className="nav-ul-mb" id="wrapper-menu-navigation">
             {navItems.map((item, i) => (
               <li key={i} className="nav-mb-item">
-                <a
-                  href={`#${item.id}`}
-                  className={`collapsed mb-menu-link current ${
-                    isMenuActive(item) ? "activeMenu" : ""
-                  }`}
-                  data-bs-toggle="collapse"
-                  aria-expanded="true"
-                  aria-controls={item.id}
-                >
-                  <span>{item.label}</span>
-                  <span className="btn-open-sub" />
-                </a>
-                <div id={item.id} className="collapse">
-                  <ul className="sub-nav-menu">
-                    {item.links.map((subItem, i2) => (
-                      <li key={i2}>
-                        {subItem.links ? (
-                          <>
-                            <a
-                              href={`#${subItem.id}`}
-                              className={`sub-nav-link collapsed  ${
-                                isMenuActive(subItem) ? "activeMenu" : ""
-                              }`}
-                              data-bs-toggle="collapse"
-                              aria-expanded="true"
-                              aria-controls={subItem.id}
+                {item.links ? (
+                  <>
+                    <a
+                      href={`#${item.id}`}
+                      className={`collapsed mb-menu-link current ${isMenuActive(item) ? "activeMenu" : ""}`}
+                      data-bs-toggle="collapse"
+                      aria-expanded="true"
+                      aria-controls={item.id}
+                    >
+                      <span>{item.label}</span>
+                      <span className="btn-open-sub" />
+                    </a>
+                    <div id={item.id} className="collapse">
+                      <ul className="sub-nav-menu">
+                        {item.links?.map((subItem, i2) => (
+                          <li key={i2}>
+                            <Link
+                              href={subItem.href}
+                              className={`sub-nav-link ${isMenuActive(subItem) ? "activeMenu" : ""}`}
                             >
-                              <span>{subItem.label}</span>
-                              <span className="btn-open-sub" />
-                            </a>
-                            <div id={subItem.id} className="collapse">
-                              <ul className="sub-nav-menu sub-menu-level-2">
-                                {subItem.links.map((innerItem, i3) => (
-                                  <li key={i3}>
-                                    <Link
-                                      href={innerItem.href}
-                                      className={`sub-nav-link  ${
-                                        isMenuActive(innerItem)
-                                          ? "activeMenu"
-                                          : ""
-                                      }`}
-                                    >
-                                      {innerItem.label}
-                                      {innerItem.demoLabel && (
-                                        <div className="demo-label">
-                                          <span className="demo-new">New</span>
-                                        </div>
-                                      )}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </>
-                        ) : (
-                          <Link
-                            href={subItem.href}
-                            className={`sub-nav-link ${
-                              isMenuActive(subItem) ? "activeMenu" : ""
-                            }`}
-                          >
-                            {subItem.label}
-                            {subItem.demoLabel && (
-                              <div className="demo-label">
-                                <span className="demo-new">New</span>
-                              </div>
-                            )}
-                          </Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                              {subItem.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={`mb-menu-link ${isMenuActive(item) ? "activeMenu" : ""}`}
+                  >
+                    <span>{item.label}</span>
+                  </Link>
+                )}
               </li>
             ))}
-            <li className="nav-mb-item">
-              <a
-                href="https://themeforest.net/item/ecomus-ultimate-html5-template/53417990?s_rank=3"
-                className="mb-menu-link"
-              >
-                Buy now
-              </a>
-            </li>
           </ul>
           <div className="mb-other-content">
             <div className="d-flex group-icon">
               <Link href={`/wishlist`} className="site-nav-icon">
                 <i className="icon icon-heart" />
-                Wishlist
+                Bəyəndiklərim
               </Link>
               <Link href={`/home-search`} className="site-nav-icon">
                 <i className="icon icon-search" />
-                Search
+                Axtarış
               </Link>
             </div>
             <div className="mb-notice">
               <Link href={`/contact-1`} className="text-need">
-                Need help ?
+                Kömək lazımdır?
               </Link>
             </div>
             <ul className="mb-info">
               <li>
-                Address: 1234 Fashion Street, Suite 567, <br />
-                New York, NY 10001
+                Ünvan: 1234 , lokal 567, <br />
+                Bakı adresi
               </li>
               <li>
-                Email: <b>info@fashionshop.com</b>
+                Email: <b>info@saytyarat.com</b>
               </li>
               <li>
-                Phone: <b>(212) 555-1234</b>
+                Telefon: <b>+994 12 404 04 04</b>
               </li>
             </ul>
           </div>
@@ -162,20 +114,9 @@ export default function MobileMenu() {
         <div className="mb-bottom">
           <Link href={`/login`} className="site-nav-icon">
             <i className="icon icon-account" />
-            Login
+            Giriş
           </Link>
-          <div className="bottom-bar-language">
-            <div className="tf-currencies">
-              <CurrencySelect />
-            </div>
-            <div className="tf-languages">
-              <LanguageSelect
-                parentClassName={
-                  "image-select center style-default type-languages"
-                }
-              />
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

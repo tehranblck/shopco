@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import LanguageSelect from "../../common/LanguageSelect";
-import CurrencySelect from "../../common/CurrencySelect";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 export default function Topbar1() {

@@ -10,7 +10,7 @@ export default function Login() {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="header">
-            <div className="demo-title">Log in</div>
+            <div className="demo-title">Hesaba daxil ol</div>
             <span
               className="icon-close icon-close-popup"
               data-bs-dismiss="modal"
@@ -45,7 +45,7 @@ export default function Login() {
                   autoComplete="current-password"
                 />
                 <label className="tf-field-label" htmlFor="">
-                  Password *
+                  Şifrə *
                 </label>
               </div>
               <div>
@@ -54,7 +54,7 @@ export default function Login() {
                   data-bs-toggle="modal"
                   className="btn-link link"
                 >
-                  Forgot your password?
+                  Şifrəni unutmusunuz?
                 </a>
               </div>
               <div className="bottom">
@@ -63,7 +63,7 @@ export default function Login() {
                     type="submit"
                     className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                   >
-                    <span>Log in</span>
+                    <span>Hesaba daxil ol</span>
                   </button>
                 </div>
                 <div className="w-100">
@@ -72,7 +72,7 @@ export default function Login() {
                     data-bs-toggle="modal"
                     className="btn-link fw-6 w-100 link"
                   >
-                    New customer? Create your account
+                    Yeni müştəri? Hesab yarat
                     <i className="icon icon-arrow1-top-left" />
                   </a>
                 </div>

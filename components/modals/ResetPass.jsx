@@ -10,7 +10,7 @@ export default function ResetPass() {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="header">
-            <div className="demo-title">Reset your password</div>
+            <div className="demo-title">Şifrəni sıfırla</div>
             <span
               className="icon-close icon-close-popup"
               data-bs-dismiss="modal"
@@ -20,9 +20,8 @@ export default function ResetPass() {
             <form onSubmit={(e) => e.preventDefault()} className="">
               <div>
                 <p>
-                  Sign up for early Sale access plus tailored new arrivals,
-                  trends and promotions. To opt out, click unsubscribe in our
-                  emails
+                  Erkən satışa giriş, xüsusi yeni gələnlər, trendlər və promosyonlar
+                  üçün qeydiyyatdan keçin. Ləğv etmək üçün, e-maillərimizdəki "abonelikdən çıx" seçiminə klikləyin.
                 </p>
               </div>
               <div className="tf-field style-1">
@@ -44,7 +43,7 @@ export default function ResetPass() {
                   data-bs-toggle="modal"
                   className="btn-link link"
                 >
-                  Cancel
+                  Ləğv et
                 </a>
               </div>
               <div className="bottom">
@@ -53,7 +52,7 @@ export default function ResetPass() {
                     type="submit"
                     className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                   >
-                    <span>Reset password</span>
+                    <span>Şifrəni sıfırla</span>
                   </button>
                 </div>
               </div>
