@@ -7,10 +7,9 @@ export default function Register() {
       <div className="container">
         <div className="form-register-wrap">
           <div className="flat-title align-items-start gap-0 mb_30 px-0">
-            <h5 className="mb_18">Register</h5>
+            <h5 className="mb_18">Qeydiyyat</h5>
             <p className="text_black-2">
-              Sign up for early Sale access plus tailored new arrivals, trends
-              and promotions. To opt out, click unsubscribe in our emails
+              Ertələnmiş Satışa giriş, xüsusi yeni məhsullar, trendlər və promosyonlar üçün qeydiyyatdan keçin. Abunəliyi ləğv etmək üçün e-poçtlarımızda "abunəliyi ləğv et" seçimini tıklayın.
             </p>
           </div>
           <div>
@@ -36,7 +35,7 @@ export default function Register() {
                   className="tf-field-label fw-4 text_black-2"
                   htmlFor="property1"
                 >
-                  First name
+                  Ad *
                 </label>
               </div>
               <div className="tf-field style-1 mb_15">
@@ -52,7 +51,7 @@ export default function Register() {
                   className="tf-field-label fw-4 text_black-2"
                   htmlFor="property2"
                 >
-                  Last name
+                  Soyad *
                 </label>
               </div>
               <div className="tf-field style-1 mb_15">
@@ -69,7 +68,7 @@ export default function Register() {
                   className="tf-field-label fw-4 text_black-2"
                   htmlFor="property3"
                 >
-                  Email *
+                  E-poçt ünvanı *
                 </label>
               </div>
               <div className="tf-field style-1 mb_30">
@@ -86,7 +85,7 @@ export default function Register() {
                   className="tf-field-label fw-4 text_black-2"
                   htmlFor="property4"
                 >
-                  Password *
+                  Şifrə *
                 </label>
               </div>
               <div className="mb_20">
@@ -94,12 +93,12 @@ export default function Register() {
                   type="submit"
                   className="tf-btn w-100 radius-3 btn-fill animate-hover-btn justify-content-center"
                 >
-                  Register
+                  Qeydiyyatdan keç
                 </button>
               </div>
               <div className="text-center">
                 <Link href={`/login`} className="tf-btn btn-line">
-                  Already have an account? Log in here
+                  Artıq hesabınız var? Buradan daxil olun
                   <i className="icon icon-arrow1-top-left" />
                 </Link>
               </div>

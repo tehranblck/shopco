@@ -8,9 +8,9 @@ export default function Login() {
         <div className="tf-grid-layout lg-col-2 tf-login-wrap">
           <div className="tf-login-form">
             <div id="recover">
-              <h5 className="mb_24">Reset your password</h5>
+              <h5 className="mb_24">Şifrənizi sıfırlayın</h5>
               <p className="mb_30">
-                We will send you an email to reset your password
+                Şifrənizi sıfırlamaq üçün sizə e-poçt göndərəcəyik
               </p>
               <div>
                 <form onSubmit={(e) => e.preventDefault()} className="">
@@ -28,12 +28,12 @@ export default function Login() {
                       className="tf-field-label fw-4 text_black-2"
                       htmlFor="property3"
                     >
-                      Email *
+                      E-poçt ünvanı *
                     </label>
                   </div>
                   <div className="mb_20">
                     <a href="#login" className="tf-btn btn-line">
-                      Cancel
+                      Ləğv et
                     </a>
                   </div>
                   <div className="">
@@ -41,14 +41,14 @@ export default function Login() {
                       type="submit"
                       className="tf-btn w-100 radius-3 btn-fill animate-hover-btn justify-content-center"
                     >
-                      Reset password
+                      Şifrəni sıfırlayın
                     </button>
                   </div>
                 </form>
               </div>
             </div>
             <div id="login">
-              <h5 className="mb_36">Log in</h5>
+              <h5 className="mb_36">Daxil ol</h5>
               <div>
                 <form onSubmit={(e) => e.preventDefault()}>
                   <div className="tf-field style-1 mb_15">
@@ -65,7 +65,7 @@ export default function Login() {
                       className="tf-field-label fw-4 text_black-2"
                       htmlFor="property3"
                     >
-                      Email *
+                      E-poçt ünvanı *
                     </label>
                   </div>
                   <div className="tf-field style-1 mb_30">
@@ -82,12 +82,12 @@ export default function Login() {
                       className="tf-field-label fw-4 text_black-2"
                       htmlFor="property4"
                     >
-                      Password *
+                      Şifrə *
                     </label>
                   </div>
                   <div className="mb_20">
                     <a href="#recover" className="tf-btn btn-line">
-                      Forgot your password?
+                      Şifrənizi unutmusunuz?
                     </a>
                   </div>
                   <div className="">
@@ -95,7 +95,7 @@ export default function Login() {
                       type="submit"
                       className="tf-btn w-100 radius-3 btn-fill animate-hover-btn justify-content-center"
                     >
-                      Log in
+                      Daxil ol
                     </button>
                   </div>
                 </form>
@@ -103,13 +103,12 @@ export default function Login() {
             </div>
           </div>
           <div className="tf-login-content">
-            <h5 className="mb_36">I'm new here</h5>
+            <h5 className="mb_36">Mən yeniyəm</h5>
             <p className="mb_20">
-              Sign up for early Sale access plus tailored new arrivals, trends
-              and promotions. To opt out, click unsubscribe in our emails.
+              Ertələnmiş Satışa giriş, xüsusi yeni məhsullar, trendlər və promosyonlar üçün qeydiyyatdan keçin. Abunəliyi ləğv etmək üçün e-poçtlarımızda "abunəliyi ləğv et" seçimini tıklayın.
             </p>
             <Link href={`/register`} className="tf-btn btn-line">
-              Register
+              Qeydiyyat
               <i className="icon icon-arrow1-top-left" />
             </Link>
           </div>

@@ -4,15 +4,15 @@ import Wishlist from "../../../components/othersPages/dashboard/Wishlist";
 import React from "react";
 
 export const metadata = {
-  title: "My Account Wishlist || Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Bəyəndiklərim || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
 };
 export default function page() {
   return (
     <>
-      <div className="tf-page-title">
+      <div style={{ marginTop: "90px" }} className="tf-page-title">
         <div className="container-full">
-          <div className="heading text-center">My Account Wishlist</div>
+          <div className="heading text-center">Bəyəndiklərim</div>
         </div>
       </div>
       <section className="flat-spacing-11">

@@ -10,9 +10,9 @@ export const metadata = {
 export default function page() {
   return (
     <>
-      <div className="tf-page-title">
+      <div style={{ marginTop: "90px" }} className="tf-page-title">
         <div className="container-full">
-          <div className="heading text-center">My Account Address</div>
+          <div className="heading text-center">Ünvanlarım</div>
         </div>
       </div>
       <section className="flat-spacing-11">

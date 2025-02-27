@@ -4,15 +4,15 @@ import DashboardNav from "../../../components/othersPages/dashboard/DashboardNav
 import React from "react";
 
 export const metadata = {
-  title: "My Account Edit || Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Hesab Məlumatları || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate React Nextjs Ecommerce Template",
 };
 export default function page() {
   return (
     <>
-      <div className="tf-page-title">
+      <div style={{ marginTop: "90px" }} className="tf-page-title">
         <div className="container-full">
-          <div className="heading text-center">My Account Edit</div>
+          <div className="heading text-center">Hesab Məlumatları</div>
         </div>
       </div>
       <section className="flat-spacing-11">

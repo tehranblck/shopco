@@ -3,15 +3,15 @@ import Orders from "../../../components/othersPages/dashboard/Orders";
 import React from "react";
 
 export const metadata = {
-  title: "My Account Orders || Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Sifarişlərim || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
 };
 export default function page() {
   return (
     <>
-      <div className="tf-page-title">
+      <div style={{ marginTop: "90px" }} className="tf-page-title">
         <div className="container-full">
-          <div className="heading text-center">My Orders</div>
+          <div className="heading text-center">Sifarişlərim</div>
         </div>
       </div>
       <section className="flat-spacing-11">
