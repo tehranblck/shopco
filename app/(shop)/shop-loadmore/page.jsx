@@ -11,9 +11,9 @@ export default function page() {
     <>
       <div className="tf-page-title">
         <div className="container-full">
-          <div className="heading text-center">New Arrival</div>
+          <div className="heading text-center">Yeni Gələnlər</div>
           <p className="text-center text-2 text_black-2 mt_5">
-            Shop through our latest selection of Fashion
+            Mağazamızda olan yeni gələnlər
           </p>
         </div>
       </div>
