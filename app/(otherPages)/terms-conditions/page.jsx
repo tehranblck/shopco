@@ -1,14 +1,24 @@
-
 import React from "react";
+
+export const metadata = {
+  title: "Şərtlər və Şərtler || Shopco Store",
+  description: "Şərtlər və Şərtler",
+  keywords: "Şərtlər və Şərtler, Shopco Store",
+  author: "Shopco Store",
+  robots: "index, follow",
+  icons: {
+    icon: "/images/favikon.png",
+  },
+};
 
 export default function page() {
   return (
     <>
       <>
         {/* page-title */}
-        <div className="tf-page-title style-2">
+        <div style={{ marginTop: "90px" }} className="tf-page-title style-2">
           <div className="container-full">
-            <div className="heading text-center">Terms &amp; Conditions</div>
+            <div className="heading text-center">Şərtlər və Şərtler</div>
           </div>
         </div>
         {/* /page-title */}
@@ -17,175 +27,116 @@ export default function page() {
           <div className="container">
             <div className="tf-main-area-page tf-terms-conditions">
               <div className="box">
-                <h4>These Terms and Conditions May Change</h4>
+                <h4>Bu Şərtlər və Şərtlər Dəyişə bilər</h4>
                 <p>
-                  We reserve the right to update or modify these terms and
-                  conditions at any time without prior notice. Your use of
-                  shop.company.com and shop.beetle.com.sg following any such
-                  change constitutes your agreement to follow and be bound by
-                  the terms and conditions as changed. For this reason, we
-                  encourage you to review these terms and conditions whenever
-                  you use this website.
+                  Biz bu şərtləri və şərtləri istənilən vaxt əvvəlcədən xəbərdarlıq
+                  etmədən yeniləmə və ya dəyişdirmə hüququnu saxlayırıq. shop.company.com
+                  və shop.beetle.com.sg saytlarından istifadə etməyiniz,
+                  dəyişikliklərdən sonra bu şərtləri qəbul etməyinizi və onlara əməl
+                  etməyinizi göstərir. Bu səbəbdən, bu şərtləri və şərtləri
+                  hər dəfə bu vebsaytı istifadə edərkən nəzərdən keçirməyinizi
+                  tövsiyə edirik.
                 </p>
               </div>
               <div className="box">
-                <h4>Limitations of Liability</h4>
+                <h4>Öhdəliklərin Məhdudiyyəti</h4>
                 <p>
-                  The Company Pte Ltd shall not assume any responsibility, and
-                  shall not be liable for, any damages to, or viruses that may
-                  infect, your computer, telecommunication equipment, or other
-                  property caused by or arising from your access to, use of, or
-                  browsing this website or your downloading of any materials,
-                  from this website. IN NO EVENT WILL THE COMPANY PRIVATE
-                  LIMITED NOR THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES,
-                  SHAREHOLDERS, AFFILIATES, AGENTS, SUCCESSORS, ASSIGNS, RETAIL
-                  PARTNERS NOR ANY PARTY INVOLVED IN THE CREATION, PRODUCTION OR
-                  TRANSMISSION OF THIS WEB SITE BE LIABLE TO ANY PARTY FOR ANY
-                  INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL OR CONSEQUENTIAL
-                  DAMAGES (INCLUDING, WITHOUT LIMITATION, THOSE RESULTING FROM
-                  LOST PROFITS, LOST DATA OR BUSINESS INTERRUPTION) ARISING OUT
-                  OF THE USE, INABILITY TO USE, OR THE RESULTS OF USE OF THIS
-                  WEB SITE, ANY WEB SITES LINKED TO THIS WEB SITE, OR THE
-                  MATERIALS, INFORMATION OR SERVICES CONTAINED AT ANY OR ALL
-                  SUCH SITES, WHETHER BASED ON WARRANTY, CONTRACT, TORT OR ANY
-                  OTHER LEGAL THEORY AND WHETHER OR NOT ADVISED OF THE
-                  POSSIBILITY OF SUCH DAMAGES. THE FOREGOING LIMITATIONS OF
-                  LIABILITY DO NOT APPLY TO THE EXTENT PROHIBITED BY LAW. PLEASE
-                  REFER TO YOUR LOCAL LAWS FOR ANY SUCH PROHIBITIONS.
-                </p>
-                <p>
-                  IN THE EVENT OF ANY PROBLEM WITH THIS WEBSITE OR ANY CONTENT,
-                  YOU AGREE THAT YOUR SOLE REMEDY IS TO CEASE USING THIS
-                  WEBSITE. IN THE EVENT OF ANY PROBLEM WITH THE PRODUCTS OR
-                  SERVICES THAT YOU HAVE PURCHASED ON OR THROUGH THIS WEB SITE,
-                  YOU AGREE THAT YOUR REMEDY, IF ANY, IS FROM THE MANUFACTURER
-                  OF SUCH PRODUCTS OR SUPPLIER OF SUCH SERVICES, IN ACCORDANCE
-                  WITH SUCH MANUFACTURER’S OR SUPPLIER’S WARRANTY, OR TO SEEK A
-                  RETURN AND REFUND FOR SUCH PRODUCT OR SERVICES IN ACCORDANCE
-                  WITH THE RETURNS AND REFUNDS POLICIES POSTED ON THIS WEB SITE.
-                  This site may include inaccuracies, mistakes or typographical
-                  errors. CharlesKeith.com does not warrant that the content
-                  will be uninterrupted or error free.
+                  Şirkət Pte Ltd heç bir məsuliyyət daşımır və sizin
+                  kompüterinizə, telekommunikasiya avadanlığınıza və ya digər
+                  mülklərinizə ziyan vurulmasına və ya virusların
+                  yoluxmasına görə məsuliyyət daşımır. BU SAYTIN İSTİFADƏSİ
+                  VƏ YA İSTİFADƏSİNİN NƏTİCƏSİNDƏ YOXSA BU SAYTDAKİ
+                  MATERIALLARIN YÜKLƏNMƏSİNDƏN YARANAN HƏR HANSILIQ
+                  XƏRCLƏRƏ, ZƏRƏRLƏRƏ, İŞ KESİLMƏLƏRİNƏ DƏMƏTLƏRƏ
+                  (BUDA QƏBUL EDİLMƏYƏCƏK DƏYİŞİKLƏR, YOXSA SƏNƏDLƏR)
+                  HEÇ BİR ZƏRƏR ÖDƏNMƏYƏCƏKDİR.
                 </p>
               </div>
               <div className="box">
-                <h4>Copyright and Trademark</h4>
+                <h4>Qanunla Əlaqədar Müəlliflik Hüquqları və Ticarət Markaları</h4>
                 <p>
-                  Unless otherwise indicated, material on this website,
-                  including but not limited to texts, images, illustrations,
-                  software, audio clips, video clips, animation files, is
-                  subject to the copyright and trademark rights of The Company
-                  Private Limited. Consequently, the material on this website
-                  may not be copied, reproduced, modified, posted, transmitted,
-                  distributed, in whole or in part in any form whatsoever,
-                  without the prior written consent of The Company Private
-                  Limited. All rights reserved.
+                  Bu vebsaytdakı materiallar, xüsusilə mətni, şəkilləri,
+                  illüstrasiyaları, proqramları, audio klipləri, video klipləri
+                  və animasiya fayllarını daxil olmaqla, Şirkət Private Limited
+                  tərəfindən müəlliflik hüquqları və ticarət markası hüquqları
+                  ilə qorunur. Buna görə də, bu materiallar heç bir şəkildə
+                  kopyalanmaya, təkrarlanmağa, dəyişdirilməyə, göndərilməyə,
+                  yayımlanmağa, bölüşdürülməyə, tam və ya qismən olaraq
+                  Şirkət Private Limited-in əvvəlcədən yazılı icazəsi olmadan
+                  istifadə edilə bilməz.
                 </p>
               </div>
               <div className="box">
-                <h4>Products, Content and Specifications</h4>
+                <h4>Proqramlar, Məhsullar və Spesifikasiyalar</h4>
                 <p>
-                  All features, content, specifications, products and prices of
-                  products and services described or depicted on this website
-                  are subject to change at any time without notice. Certain
-                  weights, measures and similar descriptions are approximate and
-                  are provided for convenience purposes only. We make all
-                  reasonable efforts to accurately display the attributes of our
-                  products, including the applicable colors; however, the actual
-                  color you see will depend on your computer system and we
-                  cannot guarantee that your computer will accurately display
-                  such colors. The inclusion of any products or services in this
-                  website at a particular time does not imply or warrant that
-                  these products or services will be available at any time. It
-                  is your responsibility to ascertain and obey all applicable
-                  local, state and international laws in regard to the
-                  possession, use and sale of any item purchased from this
-                  website. By placing an order, you represent that the products
-                  ordered will be used only in a lawful manner.
+                  Bu vebsaytda təsvir edilən və ya göstərilən bütün xüsusiyyətlər,
+                  məzmun, spesifikasiyalar, məhsullar və xidmətlər, xəbərdarlıq
+                  edilmədən hər zaman dəyişdirilə bilər. Bəzi ölçülər, çəkilər
+                  və oxşar təsvirlər təxmini ola bilər və yalnız rahatlıq məqsədilə
+                  təqdim edilir. Məhsullarımızın atributlarını dəqiq şəkildə
+                  göstərmək üçün bütün uyğun səyləri göstəririk; lakin, gördüyünüz
+                  faktiki rəng kompüter sisteminizdən asılı olacaq və bu rəngin
+                  dəqiq göstəriləcəyini təmin edə bilmərik.
                 </p>
               </div>
               <div className="box">
-                <h4>Shipping Limitations</h4>
+                <h4>Çatdırılma Məhdudiyyətləri</h4>
                 <p>
-                  When an order is placed, it will be shipped to an address
-                  designated by the purchaser as long as that shipping address
-                  is compliant with the shipping restrictions contained on this
-                  website. All purchases from this website are made pursuant to
-                  a shipment contract. As a result, risk of loss and title for
-                  items purchased from this website pass to you upon delivery of
-                  the items to the carrier. You are responsible for filing any
-                  claims with carriers for damaged and/or lost shipments.
+                  Bir sifariş verildikdə, o, yalnız həmin sifarişçinin
+                  çatdırılma ünvana uyğun olaraq göndəriləcəkdir. Bu vebsaytdan
+                  bütün alışlar göndərmə müqaviləsinə əsasən həyata keçirilir.
+                  Bu səbəbdən, məhsulun mülkiyyəti və zərərin riski, məhsul
+                  daşımacıya təhvil verildikdən sonra sizə keçir.
                 </p>
               </div>
               <div className="box">
-                <h4>Duties and Taxes</h4>
+                <h4>Rüsumlar və Vergilər</h4>
                 <p>
-                  You are responsible for duties and taxes outside Singapore.
-                  All items entering a foreign country are subject to customs
-                  inspection and assessment of the duties and taxes in
-                  accordance with that country’s national laws.
+                  Siz Singapur xaricində olan rüsumlar və vergilərə
+                  cavabdeh olursunuz. Xarici ölkəyə daxil olan bütün məhsullar
+                  gömrük yoxlanışı və həmin ölkənin milli qanunlarına uyğun
+                  olaraq rüsumlar və vergilərin qiymətləndirilməsinə məruz qalır.
                 </p>
               </div>
               <div className="box">
-                <h4>Your Account</h4>
+                <h4>Hesabınız</h4>
                 <p>
-                  You are responsible for maintaining the confidentiality of
-                  your account and password information, and you agree to accept
-                  responsibility for all activities that occur under your
-                  account and password. This website and The Company Pte Ltd
-                  reserves the right to refuse service, terminate accounts
-                  remove or edit content or cancel orders.By placing an order,
-                  you warrant that you are over 18 years of age, and that you
-                  are providing shop.company.com or shop.beetle.com.sg with
-                  accurate, truthful information and that you have the authority
-                  to place the order.
+                  Hesabınızın və parolunuzun məxfiliyini qorumaq sizə
+                  aiddir və hesabınızda və parolunuzda baş verən bütün
+                  fəaliyyətlərə cavabdeh olduğunuzu qəbul edirsiniz. Bu vebsayt
+                  və Şirkət Pte Ltd, xidmət rədd etmək, hesabları dayandırmaq,
+                  məzmunu silmək və ya sifarişləri ləğv etmək hüququnu saxlayır.
                 </p>
               </div>
               <div className="box">
-                <h4>Exchange and Refund Policy (Singapore Outlets Only)</h4>
+                <h4>Yoxlama və Geri Qaytarma Siyasəti (Sadəcə Singapur Mağazaları)</h4>
                 <p>
-                  New, unused full-price merchandise purchased at store retail
-                  store may be exchange at any boutique with an original receipt
-                  within 7 days of purchase. After 7 days, the merchandise may
-                  not be exchanged.We offer a no-refund policy on all
-                  merchandises, however, for merchandise qualifying for an
-                  exchange, item may be exchange for store credits which may be
-                  used at our Singapore outlets only.Merchandise on sale may not
-                  be exchanged or returned. All merchandise must be returned in
-                  sellable condition, otherwise, an exchange would not be
-                  allowed.We reserve the right to reject any form of exchange
-                  without the original receipt.
+                  Yeni, istifadə olunmamış, tam qiymətində olan məhsullar
+                  mağaza pərakəndə mağazasında orijinal qəbz ilə 7 gün ərzində
+                  dəyişdirilə bilər. 7 gündən sonra məhsullar dəyişdirilə bilməz.
                 </p>
               </div>
               <div className="box">
-                <h4>Exchange and Refund Policy (Online Shop)</h4>
-                <span>Electronic Communications</span>
+                <h4>Yoxlama və Geri Qaytarma Siyasəti (Onlayn Mağaza)</h4>
+                <span>Elektron Ünsiyyətlər</span>
                 <p>
-                  When you visit this website and/or send email to us, you
-                  consent to receive electronic communications from us. You
-                  agree that all agreements, notices, disclosures and other
-                  communications that we sent you electronically satisfy any
-                  legal requirement that such communications be in writing
+                  Bu vebsayta daxil olduqda və ya bizə e-poçt göndərdikdə,
+                  siz bizdən elektron ünsiyyətləri qəbul etməyə razı olursunuz.
+                  Siz razılaşırsınız ki, göndərdiyimiz bütün müqavilələr, bildirişlər,
+                  açıqlamalar və digər ünsiyyətlər qanuni olaraq yazılı şəkildə
+                  qəbul edilir.
                 </p>
                 <p>
-                  Exclusions of Warranties
+                  Zəmanətlərin İstisnası
                   <br />
-                  The Company Private Limited makes no representative or
-                  warranty regarding the good working order or condition of this
-                  website, its suitability for use, or that its use will be
-                  uninterrupted or error-free. All information or material
-                  provided in this website to you â€œas isâ€ and without
-                  warranties of any kind, expressed or implied, including
-                  without limitation, warranties or conditions of
-                  merchantability, fitness, quality, durability or suitability
-                  for any particular purpose, or non-infringement.
+                  Şirkət Private Limited, bu vebsaytın yaxşı işləməsi və ya
+                  istifadə üçün uyğunluğunu təmin etmir.
                 </p>
               </div>
             </div>
           </div>
         </section>
       </>
-
     </>
   );
 }

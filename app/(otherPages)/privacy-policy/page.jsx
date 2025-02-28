@@ -1,14 +1,24 @@
-
 import React from "react";
+
+export const metadata = {
+  title: "Məxfilik siyasəti || Shopco Store",
+  description: "Məxfilik siyasəti",
+  keywords: "Məxfilik siyasəti, Shopco Store",
+  author: "Shopco Store",
+  robots: "index, follow",
+  icons: {
+    icon: "/images/favikon.png",
+  },
+};
 
 export default function page() {
   return (
     <>
       <>
         {/* page-title */}
-        <div className="tf-page-title style-2">
+        <div style={{ marginTop: "90px" }} className="tf-page-title style-2">
           <div className="container-full">
-            <div className="heading text-center">Privacy Policy</div>
+            <div className="heading text-center">Məxfilik siyasəti</div>
           </div>
         </div>
         {/* /page-title */}
@@ -16,58 +26,56 @@ export default function page() {
         <section className="flat-spacing-25">
           <div className="container">
             <div className="tf-main-area-page">
-              <h4>The Company Private Limited Policy</h4>
+              <h4>Şirkət Məxfilik Siyasəti</h4>
               <p>
-                The Company Private Limited and each of their respective
-                subsidiary, parent and affiliated companies is deemed to operate
-                this Website (“we” or “us”) recognizes that you care how
-                information about you is used and shared. We have created this
-                Privacy Policy to inform you what information we collect on the
-                Website, how we use your information and the choices you have
-                about the way your information is collected and used. Please
-                read this Privacy Policy carefully. Your use of the Website
-                indicates that you have read and accepted our privacy practices,
-                as outlined in this Privacy Policy.
+                Şirkət Məxfilik Siyasəti və onun müvafiq törəmə, ana və əlaqəli
+                şirkətləri bu vebsaytı (biz və ya bizə) idarə etdiyini qəbul edir
+                və sizə aid olan məlumatların necə istifadə olunduğunu və
+                paylaşılacağını önəmsədiyinizi anlayır. Biz bu Məxfilik Siyasətini
+                yaratdıq ki, vebsayt üzərindən topladığımız məlumatları necə
+                istifadə etdiyimizi və məlumatlarınızın toplanması və istifadəsi
+                ilə bağlı hansı seçimləriniz olduğunu sizə bildirmək üçün.
+                Zəhmət olmasa, bu Məxfilik Siyasətini diqqətlə oxuyun. Vebsaytdan
+                istifadə etməyiniz, bu Məxfilik Siyasətində qeyd olunan məxfilik
+                təcrübələrimizi oxuyub qəbul etdiyinizi göstərir.
               </p>
               <p>
-                Please be advised that the practices described in this Privacy
-                Policy apply to information gathered by us or our subsidiaries,
-                affiliates or agents: (i) through this Website, (ii) where
-                applicable, through our Customer Service Department in
-                connection with this Website, (iii) through information provided
-                to us in our free standing retail stores, and (iv) through
-                information provided to us in conjunction with marketing
-                promotions and sweepstakes.
+                Xahiş edirik nəzərinizə çatdıraq ki, bu Məxfilik Siyasətində
+                təsvir olunan təcrübələr bizə və ya bizim törəmə, əlaqəli və ya
+                nümayəndəliklərimiz tərəfindən toplanan məlumatlara tətbiq edilir:
+                (i) bu vebsayt vasitəsilə, (ii) tətbiq edildiyi halda, bizim
+                Müştəri Xidmətləri Departamentimiz vasitəsilə bu vebsaytla əlaqədar,
+                (iii) bizə müstəqil pərakəndə satış mağazalarımızda təqdim edilən
+                məlumatlar vasitəsilə, və (iv) marketinq promosyonları və
+                müsabiqələrə dair bizə təqdim edilən məlumatlar vasitəsilə.
               </p>
               <p>
-                We are not responsible for the content or privacy practices on
-                any websites.
+                Biz heç bir vebsaytın məzmunu və ya məxfilik təcrübələrinə görə
+                məsuliyyət daşımırıq.
               </p>
               <p>
-                We reserve the right, in our sole discretion, to modify, update,
-                add to, discontinue, remove or otherwise change any portion of
-                this Privacy Policy, in whole or in part, at any time. When we
-                amend this Privacy Policy, we will revise the “last updated”
-                date located at the top of this Privacy Policy.
+                Biz, öz müstəsna qərarımıza əsasən, bu Məxfilik Siyasətini dəyişdirmək,
+                yeniləmək, əlavə etmək, dayandırmaq, silmək və ya digər şəkildə
+                dəyişdirmək hüququnu saxlayırıq. Biz bu Məxfilik Siyasətini
+                dəyişdirdikdə, yuxarıda göstərilən "son yenilənmə" tarixini
+                yeniləyəcəyik.
               </p>
               <p>
-                If you provide information to us or access or use the Website in
-                any way after this Privacy Policy has been changed, you will be
-                deemed to have unconditionally consented and agreed to such
-                changes. The most current version of this Privacy Policy will be
-                available on the Website and will supersede all previous
-                versions of this Privacy Policy.
+                Əgər siz bizə məlumat verər və ya bu Məxfilik Siyasəti dəyişdirildikdən
+                sonra vebsayta daxil olarsanız və ya istifadə edərsinizsə, bu dəyişiklikləri
+                şərtsiz olaraq qəbul etdiyinizi göstərir. Bu Məxfilik Siyasətinin ən
+                son versiyası vebsaytda mövcud olacaq və bu Məxfilik Siyasətinin
+                əvvəlki bütün versiyalarını əvəz edəcəkdir.
               </p>
               <p>
-                If you have any questions regarding this Privacy Policy, you
-                should contact our Customer Service Department by email at
-                marketing@company.com
+                Əgər bu Məxfilik Siyasəti ilə bağlı hər hansı bir sualınız varsa,
+                zəhmət olmasa Müştəri Xidmətləri Departamentimizə marketing@company.com
+                ünvanı ilə müraciət edin.
               </p>
             </div>
           </div>
         </section>
       </>
-
     </>
   );
 }

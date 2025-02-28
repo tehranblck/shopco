@@ -3,7 +3,7 @@ export const footerLinks = [
   { href: "/delivery-return", text: "Geri qaytarılma + Əvəzetmə" },
   { href: "/shipping-delivery", text: "Çatdırılma" },
   { href: "/terms-conditions", text: "Şərtlər və Şərtlar" },
-  { href: "/faq-1", text: "FAQ’s" },
+  { href: "/faq", text: "Tez-tez verilən suallar" },
   { href: "/wishlist", text: "Bəyənilmişlərim" },
 ];
 export const aboutLinks = [

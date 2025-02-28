@@ -1,14 +1,24 @@
-
 import React from "react";
+
+export const metadata = {
+  title: "Çatdırılma & Göndərmə || Shopco Store",
+  description: "Çatdırılma & Göndərmə",
+  keywords: "Çatdırılma & Göndərmə, Shopco Store",
+  author: "Shopco Store",
+  robots: "index, follow",
+  icons: {
+    icon: "/images/favikon.png",
+  },
+};
 
 export default function page() {
   return (
     <>
       <>
         {/* page-title */}
-        <div className="tf-page-title style-2">
+        <div style={{ marginTop: "90px" }} className="tf-page-title style-2">
           <div className="container-full">
-            <div className="heading text-center">Shipping &amp; Delivery</div>
+            <div className="heading text-center">Çatdırılma</div>
           </div>
         </div>
         {/* /page-title */}
@@ -17,48 +27,46 @@ export default function page() {
           <div className="container">
             <div className="tf-main-area-page tf-page-delivery">
               <div className="box">
-                <h4>Delivery</h4>
-                <p>All orders shipped with UPS Express.</p>
-                <p>Always free shipping for orders over US $250.</p>
-                <p>All orders are shipped with a UPS tracking number.</p>
+                <h4>Çatdırılma</h4>
+                <p>Bütün sifarişlər UPS Express ilə göndərilir.</p>
+                <p>250 ABŞ dollarından yuxarı sifarişlər üçün həmişə pulsuz çatdırılma.</p>
+                <p>Bütün sifarişlər UPS izləmə nömrəsi ilə göndərilir.</p>
               </div>
               <div className="box">
-                <h4>Returns</h4>
+                <h4>Geri qaytarma</h4>
                 <p>
-                  Items returned within 14 days of their original shipment date
-                  in same as new condition will be eligible for a full refund or
-                  store credit.
+                  Orijinal göndərilmə tarixindən 14 gün ərzində eyni vəziyyətdə
+                  geri qaytarılan əşyalar tam geri ödəmə və ya mağaza krediti
+                  üçün uyğun olacaqdır.
                 </p>
                 <p>
-                  Refunds will be charged back to the original form of payment
-                  used for purchase.
+                  Geri ödəmələr, alış üçün istifadə olunan orijinal ödəniş formasına
+                  qaytarılacaqdır.
                 </p>
                 <p>
-                  Customer is responsible for shipping charges when making
-                  returns and shipping/handling fees of original purchase is
-                  non-refundable.
+                  Müştəri geri qaytarma zamanı çatdırılma xərclərinə cavabdehdir və
+                  orijinal alışın çatdırılma/baxım haqları geri qaytarılmır.
                 </p>
-                <p>All sale items are final purchases.</p>
+                <p>Bütün satış məhsulları son alınan məhsullardır.</p>
               </div>
               <div className="box">
-                <h4>Help</h4>
+                <h4>Yardım</h4>
                 <p>
-                  Give us a shout if you have any other questions and/or
-                  concerns.
+                  Hər hansı digər suallarınız və ya narahatlıqlarınız varsa, bizə
+                  müraciət edin.
                 </p>
                 <p>
-                  Email:
-                  <a href="mailto:contact@domain.com" className="cf-mail">
-                    contact@domain.com
+                  E-poçt:
+                  <a href="mailto:info@saytyarat.com" className="cf-mail">
+                    info@saytyarat.com
                   </a>
                 </p>
-                <p>Phone: +1 (23) 456 789</p>
+                <p><a href="tel:+994507431206">Telefon: +994 50 743 12 06</a></p>
               </div>
             </div>
           </div>
         </section>
       </>
-
     </>
   );
 }
