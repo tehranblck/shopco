@@ -19,7 +19,9 @@ import Register from "../components/modals/Register";
 import ResetPass from "../components/modals/ResetPass";
 import SearchModal from "../components/modals/SearchModal";
 import QuickAdd from "../components/modals/QuickAdd";
+import QuickView from "../components/modals/QuickView";
 import MobileMenu from "../components/modals/MobileMenu";
+import { Providers } from "../store/provider";
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   useEffect(() => {
@@ -151,22 +153,24 @@ export default function RootLayout({ children }) {
           </div>
         </div>{" "}
         <Context>
-          <div style={{ top: "0px" }} id="wrapper">
-            {pathname === "/" && <Topbar1 />}
-            <Header1 />
-            {children}
-            <Footer1 />
-          </div>
-          <ShopCart />
-          <Login />
-          <Register />
-          <ResetPass />
-          <SearchModal />
-          <QuickAdd />
-          <MobileMenu />
-          { /*  <HomesModal /> <QuickView />*/}
+          <Providers>
+            <div style={{ top: "0px" }} id="wrapper">
+              {pathname === "/" && <Topbar1 />}
+              <Header1 />
+              {children}
+              <Footer1 />
+            </div>
+            <ShopCart />
+            <Login />
+            <Register />
+            <ResetPass />
+            <SearchModal />
+            <QuickAdd />
+            <MobileMenu />
+            <QuickView />
+            { /*  <HomesModal /> */}
 
-          {/* <ProductSidebar />
+            {/* <ProductSidebar />
           <Compare />
        
           <AskQuestion />
@@ -182,6 +186,7 @@ export default function RootLayout({ children }) {
           <ToolbarShop />}
           {/* <NewsletterModal />
           <ShareModal />{" "}*/}
+          </Providers>
         </Context>
         <ScrollTop />
       </body>

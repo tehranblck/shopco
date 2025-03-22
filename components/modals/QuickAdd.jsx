@@ -2,28 +2,46 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSelector } from 'react-redux';
 import Quantity from "../shopDetails/Quantity";
 import { useContextElement } from "../../context/Context";
 
-import { allProducts } from "../../data/products";
-import { colors, sizeOptions } from "../../data/singleProductOptions";
 export default function QuickAdd() {
   const {
     quickAddItem,
     addProductToCart,
     isAddedToCartProducts,
-    addToCompareItem,
-    isAddedtoCompareItem,
   } = useContextElement();
-  const [item, setItem] = useState(allProducts[0]);
+
+  const { items: products } = useSelector((state) => state.products);
+  const [item, setItem] = useState(null);
+  const [currentColor, setCurrentColor] = useState(null);
+  const [currentSize, setCurrentSize] = useState(null);
+
   useEffect(() => {
-    const filtered = allProducts.filter((el) => el.id == quickAddItem);
-    if (filtered) {
-      setItem(filtered[0]);
+    const product = products.find((el) => el.id === quickAddItem);
+    if (product) {
+      console.log('QuickAdd - Found product:', product);
+      setItem(product);
+      // Set initial color and size from product data
+      if (Array.isArray(product.colors) && product.colors.length > 0) {
+        setCurrentColor(product.colors[0]);
+      }
+      if (Array.isArray(product.stocks) && product.stocks.length > 0) {
+        setCurrentSize({ value: product.stocks[0].size.name });
+      }
     }
-  }, [quickAddItem]);
-  const [currentColor, setCurrentColor] = useState(colors[0]);
-  const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
+  }, [quickAddItem, products]);
+
+  if (!item) {
+    console.log('QuickAdd - No item found');
+    return null;
+  }
+
+  // Ensure arrays exist
+  const productColors = Array.isArray(item.colors) ? item.colors : [];
+  const productStocks = Array.isArray(item.stocks) ? item.stocks : [];
+  const availableSizes = [...new Set(productStocks.map(stock => stock.size?.name).filter(Boolean))];
 
   return (
     <div className="modal fade modalDemo" id="quick_add">
@@ -39,9 +57,9 @@ export default function QuickAdd() {
             <div className="tf-product-info-item">
               <div className="image">
                 <Image
-                  alt="image"
+                  alt={item.title}
                   style={{ objectFit: "contain" }}
-                  src={item.imgSrc}
+                  src={item.image || item.images?.[0]?.image}
                   width={720}
                   height={1005}
                 />
@@ -49,67 +67,84 @@ export default function QuickAdd() {
               <div className="content">
                 <Link href={`/product-detail/${item.id}`}>{item.title}</Link>
                 <div className="tf-product-info-price">
-                  <div className="price">${item.price.toFixed(2)}</div>
+                  <div className="price">${parseFloat(item.price).toFixed(2)}</div>
                 </div>
               </div>
             </div>
             <div className="tf-product-info-variant-picker mb_15">
-              <div className="variant-picker-item">
-                <div className="variant-picker-label">
-                  Rəng:
-                  <span className="fw-6 variant-picker-label-value">
-                    {currentColor.value}
-                  </span>
+              {productColors.length > 0 && (
+                <div className="variant-picker-item">
+                  <div className="variant-picker-label">
+                    Rəng:
+                    <span className="fw-6 variant-picker-label-value">
+                      {currentColor?.name}
+                    </span>
+                  </div>
+                  <form className="variant-picker-values">
+                    {productColors.map((color, index) => {
+                      const colorId = `color-${color.code}-${index}`;
+                      return (
+                        <React.Fragment key={colorId}>
+                          <input
+                            type="radio"
+                            name="color1"
+                            id={colorId}
+                            readOnly
+                            checked={currentColor?.code === color.code}
+                          />
+                          <label
+                            htmlFor={colorId}
+                            onClick={() => setCurrentColor(color)}
+                            className="hover-tooltip radius-60"
+                            data-value={color.name}
+                          >
+                            <span
+                              className="btn-checkbox"
+                              style={{ backgroundColor: color.code }}
+                            />
+                            <span className="tooltip">{color.name}</span>
+                          </label>
+                        </React.Fragment>
+                      );
+                    })}
+                  </form>
                 </div>
-                <form className="variant-picker-values">
-                  {colors.map((color) => (
-                    <React.Fragment key={color.id}>
-                      <input
-                        type="radio"
-                        name="color1"
-                        readOnly
-                        checked={currentColor == color}
-                      />
-                      <label
-                        onClick={() => setCurrentColor(color)}
-                        className="hover-tooltip radius-60"
-                        data-value={color.value}
-                      >
-                        <span className={`btn-checkbox ${color.className}`} />
-                        <span className="tooltip">{color.value}</span>
-                      </label>
-                    </React.Fragment>
-                  ))}
-                </form>
-              </div>
-              <div className="variant-picker-item">
-                <div className="variant-picker-label">
-                  Ölçü:{" "}
-                  <span className="fw-6 variant-picker-label-value">
-                    {" "}
-                    {currentSize.value}
-                  </span>
+              )}
+              {availableSizes.length > 0 && (
+                <div className="variant-picker-item">
+                  <div className="variant-picker-label">
+                    Ölçü:{" "}
+                    <span className="fw-6 variant-picker-label-value">
+                      {" "}
+                      {currentSize?.value}
+                    </span>
+                  </div>
+                  <form className="variant-picker-values">
+                    {availableSizes.map((size, index) => {
+                      const sizeId = `size-${size}-${index}`;
+                      return (
+                        <React.Fragment key={sizeId}>
+                          <input
+                            type="radio"
+                            name="size1"
+                            id={sizeId}
+                            readOnly
+                            checked={currentSize?.value === size}
+                          />
+                          <label
+                            htmlFor={sizeId}
+                            onClick={() => setCurrentSize({ value: size })}
+                            className="style-text"
+                            data-value={size}
+                          >
+                            <p>{size}</p>
+                          </label>
+                        </React.Fragment>
+                      );
+                    })}
+                  </form>
                 </div>
-                <form className="variant-picker-values">
-                  {sizeOptions.map((size) => (
-                    <React.Fragment key={size.id}>
-                      <input
-                        type="radio"
-                        name="size1"
-                        readOnly
-                        checked={currentSize == size}
-                      />
-                      <label
-                        onClick={() => setCurrentSize(size)}
-                        className="style-text"
-                        data-value={size.value}
-                      >
-                        <p>{size.value}</p>
-                      </label>
-                    </React.Fragment>
-                  ))}
-                </form>
-              </div>
+              )}
             </div>
             <div className="tf-product-info-quantity mb_15">
               <div className="quantity-title fw-6">Miqdar</div>
@@ -126,9 +161,8 @@ export default function QuickAdd() {
                       ? "Artıq əlavə edildi - "
                       : "Səbətə əlavə et - "}
                   </span>
-                  <span className="tf-qty-price">${item.price.toFixed(2)}</span>
+                  <span className="tf-qty-price">${parseFloat(item.price).toFixed(2)}</span>
                 </a>
-
 
                 <div className="w-100">
                   <a href="#" className="btns-full">

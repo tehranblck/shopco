@@ -4,41 +4,62 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContextElement } from "../../context/Context";
 import CountdownComponent from "../common/Countdown";
+import { generateSlug } from "../../utils/helpers";
+
 export const ProductCard = ({ product }) => {
-  const [currentImage, setCurrentImage] = useState(product.imgSrc);
-  const { setQuickViewItem } = useContextElement();
+  const [currentImage, setCurrentImage] = useState(product.image);
+  const { setQuickViewItem, setQuickAddItem } = useContextElement();
   const {
-    setQuickAddItem,
     addToWishlist,
     isAddedtoWishlist,
-    addToCompareItem,
-    isAddedtoCompareItem,
   } = useContextElement();
+
   useEffect(() => {
-    setCurrentImage(product.imgSrc);
+    setCurrentImage(product.image);
   }, [product]);
+
+  const productSlug = generateSlug(product.title, product.id);
+
+  const handleQuickAdd = (e) => {
+    e.preventDefault();
+    if (!product) {
+      console.error('Product data is missing');
+      return;
+    }
+    console.log('Setting QuickAdd Item:', product.id);
+    setQuickAddItem(product.id);
+
+    // Initialize Bootstrap modal
+    if (typeof window !== 'undefined') {
+      import('bootstrap').then((bootstrap) => {
+        const modalElement = document.getElementById('quick_add');
+        if (modalElement) {
+          const modal = new bootstrap.Modal(modalElement);
+          modal.show();
+        }
+      });
+    }
+  };
 
   return (
     <div className="card-product fl-item" key={product.id}>
       <div className="card-product-wrapper">
-        <Link href={`/product-detail/${product.id}`} className="product-img">
+        <Link href={`/product-detail/${productSlug}`} className="product-img">
           <Image
             className="lazyload img-product"
-            data-src={product.imgSrc}
             src={currentImage}
-            alt="image-product"
+            alt={product.title}
             width={720}
             height={1005}
+            style={{ width: "100%", height: "auto" }}
           />
           <Image
             className="lazyload img-hover"
-            data-src={
-              product.imgHoverSrc ? product.imgHoverSrc : product.imgSrc
-            }
-            src={product.imgHoverSrc ? product.imgHoverSrc : product.imgSrc}
-            alt="image-product"
+            src={product.allImages?.[1]?.src || currentImage}
+            alt={product.title}
             width={720}
             height={1005}
+            style={{ width: "100%", height: "auto" }}
           />
         </Link>
         {product.soldOut ? (
@@ -49,9 +70,8 @@ export const ProductCard = ({ product }) => {
           <>
             <div className="list-product-btn">
               <a
-                href="#quick_add"
-                onClick={() => setQuickAddItem(product.id)}
-                data-bs-toggle="modal"
+                href="#"
+                onClick={handleQuickAdd}
                 className="box-icon bg_white quick-add tf-btn-loading"
               >
                 <span className="icon icon-bag" />
@@ -62,8 +82,7 @@ export const ProductCard = ({ product }) => {
                 className="box-icon bg_white wishlist btn-icon-action"
               >
                 <span
-                  className={`icon icon-heart ${isAddedtoWishlist(product.id) ? "added" : ""
-                    }`}
+                  className={`icon icon-heart ${isAddedtoWishlist(product.id) ? "added" : ""}`}
                 />
                 <span className="tooltip">
                   {isAddedtoWishlist(product.id)
@@ -73,28 +92,25 @@ export const ProductCard = ({ product }) => {
                 <span className="icon icon-delete" />
               </a>
               <a
-                href="#compare"
-                data-bs-toggle="offcanvas"
-                aria-controls="offcanvasLeft"
-                onClick={() => addToCompareItem(product.id)}
-                className="box-icon bg_white compare btn-icon-action"
-              >
-                <span
-                  className={`icon icon-compare ${isAddedtoCompareItem(product.id) ? "added" : ""
-                    }`}
-                />
-                <span className="tooltip">
-                  {" "}
-                  {isAddedtoCompareItem(product.id)
-                    ? "Already Compared"
-                    : "Add to Compare"}
-                </span>
-                <span className="icon icon-check" />
-              </a>
-              <a
-                href="#quick_view"
-                onClick={() => setQuickViewItem(product)}
-                data-bs-toggle="modal"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (!product) {
+                    console.error('Product data is missing');
+                    return;
+                  }
+                  const productData = {
+                    id: product.id,
+                    title: product.title,
+                    price: product.price,
+                    description: product.description,
+                    colors: product.colors || [],
+                    allImages: product.allImages || [],
+                    stocks: product.stocks || []
+                  };
+                  console.log('Setting QuickView Item:', productData);
+                  setQuickViewItem(productData);
+                }}
                 className="box-icon bg_white quickview tf-btn-loading"
               >
                 <span className="icon icon-view" />
@@ -119,26 +135,27 @@ export const ProductCard = ({ product }) => {
         )}
       </div>
       <div className="card-product-info">
-        <Link href={`/product-detail/${product.id}`} className="title link">
+        <Link href={`/product-detail/${productSlug}`} className="title link">
           {product.title}
         </Link>
-        <span className="price">${product.price.toFixed(2)}</span>
+        <span className="price">${product.price?.toFixed(2)}</span>
         {product.colors && (
           <ul className="list-color-product">
-            {product.colors.map((color, i) => (
+            {product.allImages?.map((image, i) => (
               <li
-                className={`list-color-item color-swatch ${currentImage == color.imgSrc ? "active" : ""
-                  } `}
+                className={`list-color-item color-swatch ${currentImage === image.src ? "active" : ""}`}
                 key={i}
-                onMouseOver={() => setCurrentImage(color.imgSrc)}
+                onMouseOver={() => setCurrentImage(image.src)}
               >
-                <span className="tooltip">{color.name}</span>
-                <span className={`swatch-value ${color.colorClass}`} />
+                <span className="tooltip">{image.color.name}</span>
+                <span
+                  className="swatch-value"
+                  style={{ backgroundColor: image.color.code }}
+                />
                 <Image
                   className="lazyload"
-                  data-src={color.imgSrc}
-                  src={color.imgSrc}
-                  alt="image-product"
+                  src={image.src}
+                  alt={`${product.title} - ${image.color.name}`}
                   width={720}
                   height={1005}
                 />
@@ -147,6 +164,6 @@ export const ProductCard = ({ product }) => {
           </ul>
         )}
       </div>
-    </div>
+    </div >
   );
 };

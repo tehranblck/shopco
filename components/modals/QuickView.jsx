@@ -1,14 +1,11 @@
 "use client";
 import { useContextElement } from "../../context/Context";
-
 import Image from "next/image";
 import Link from "next/link";
-
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Quantity from "../shopDetails/Quantity";
-import { colors, sizeOptions } from "../../data/singleProductOptions";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function QuickView() {
   const {
@@ -20,31 +17,92 @@ export default function QuickView() {
     addToCompareItem,
     isAddedtoCompareItem,
   } = useContextElement();
-  const [currentColor, setCurrentColor] = useState(colors[0]);
-  const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
+
+  const [currentColor, setCurrentColor] = useState(null);
+  const [currentSize, setCurrentSize] = useState(null);
+  const [modal, setModal] = useState(null);
+
+  useEffect(() => {
+    // Initialize Bootstrap modal
+    if (typeof window !== 'undefined') {
+      const initModal = async () => {
+        const bootstrap = await import('bootstrap');
+        const modalElement = document.getElementById('quick_view');
+        if (modalElement) {
+          const modalInstance = new bootstrap.Modal(modalElement, {
+            keyboard: false,
+            backdrop: true
+          });
+          setModal(modalInstance);
+        }
+      };
+      initModal();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (quickViewItem && modal) {
+      // Validate data structure
+      if (!quickViewItem.id || !quickViewItem.title || !quickViewItem.price) {
+        console.error('Missing required product data:', quickViewItem);
+        return;
+      }
+
+      console.log('QuickView Item Data:', quickViewItem);
+
+      // Set initial color and size with validation
+      if (Array.isArray(quickViewItem.colors) && quickViewItem.colors.length > 0) {
+        setCurrentColor(quickViewItem.colors[0]);
+      }
+
+      if (Array.isArray(quickViewItem.stocks) && quickViewItem.stocks.length > 0) {
+        setCurrentSize({ value: quickViewItem.stocks[0].size.name });
+      }
+
+      try {
+        modal.show();
+      } catch (error) {
+        console.error('Modal show error:', error);
+      }
+    }
+  }, [quickViewItem, modal]);
+
+  // Early return if no data
+  if (!quickViewItem) {
+    return null;
+  }
+
+  // Ensure arrays exist
+  const productImages = Array.isArray(quickViewItem.allImages) ? quickViewItem.allImages : [];
+  const productColors = Array.isArray(quickViewItem.colors) ? quickViewItem.colors : [];
+  const productStocks = Array.isArray(quickViewItem.stocks) ? quickViewItem.stocks : [];
+
+  const availableSizes = [...new Set(productStocks.map(stock => stock.size?.name).filter(Boolean))];
 
   const openModalSizeChoice = () => {
-    const bootstrap = require("bootstrap"); // dynamically import bootstrap
-    var myModal = new bootstrap.Modal(document.getElementById("find_size"), {
-      keyboard: false,
-    });
+    if (typeof window !== 'undefined') {
+      import('bootstrap').then((bootstrap) => {
+        const sizeModal = new bootstrap.Modal(document.getElementById("find_size"), {
+          keyboard: false,
+        });
 
-    myModal.show();
-    document
-      .getElementById("find_size")
-      .addEventListener("hidden.bs.modal", () => {
-        myModal.hide();
+        sizeModal.show();
+
+        document.getElementById("find_size").addEventListener("hidden.bs.modal", () => {
+          sizeModal.hide();
+        });
+
+        const backdrops = document.querySelectorAll(".modal-backdrop");
+        if (backdrops.length > 1) {
+          const lastBackdrop = backdrops[backdrops.length - 1];
+          lastBackdrop.style.zIndex = "1057";
+        }
       });
-    const backdrops = document.querySelectorAll(".modal-backdrop");
-    if (backdrops.length > 1) {
-      // Apply z-index to the last backdrop
-      const lastBackdrop = backdrops[backdrops.length - 1];
-      lastBackdrop.style.zIndex = "1057";
     }
   };
 
   return (
-    <div className="modal fade modalDemo" id="quick_view">
+    <div className="modal fade" id="quick_view" tabIndex="-1" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="header">
@@ -55,43 +113,31 @@ export default function QuickView() {
           </div>
           <div className="wrap">
             <div className="tf-product-media-wrap">
-              {quickViewItem && (
-                <Swiper
-                  dir="ltr"
-                  modules={[Navigation]}
-                  navigation={{
-                    prevEl: ".snbqvp",
-                    nextEl: ".snbqvn",
-                  }}
-                  className="swiper tf-single-slide"
-                >
-                  {[
-                    quickViewItem.isLookBookProduct
-                      ? "/images/products/orange-1.jpg"
-                      : quickViewItem.imgSrc,
-                    quickViewItem.isLookBookProduct
-                      ? "/images/products/pink-1.jpg"
-                      : quickViewItem.imgHoverSrc
-                        ? quickViewItem.imgHoverSrc
-                        : quickViewItem.imgSrc,
-                  ].map((product, index) => (
-                    <SwiperSlide className="swiper-slide" key={index}>
-                      <div className="item">
-                        <Image
-                          alt={""}
-                          src={product}
-                          width={720}
-                          height={1045}
-                          style={{ objectFit: "contain" }}
-                        />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-
-                  <div className="swiper-button-next button-style-arrow single-slide-prev snbqvp" />
-                  <div className="swiper-button-prev button-style-arrow single-slide-next snbqvn" />
-                </Swiper>
-              )}
+              <Swiper
+                dir="ltr"
+                modules={[Navigation]}
+                navigation={{
+                  prevEl: ".snbqvp",
+                  nextEl: ".snbqvn",
+                }}
+                className="swiper tf-single-slide"
+              >
+                {productImages.map((image, index) => (
+                  <SwiperSlide className="swiper-slide" key={index}>
+                    <div className="item">
+                      <Image
+                        alt={`${quickViewItem.title} - ${image.color.name}`}
+                        src={image.src}
+                        width={720}
+                        height={1045}
+                        style={{ width: "100%", height: "auto", objectFit: "contain" }}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
+                <div className="swiper-button-next button-style-arrow single-slide-prev snbqvp" />
+                <div className="swiper-button-prev button-style-arrow single-slide-next snbqvn" />
+              </Swiper>
             </div>
             <div className="tf-product-info-wrap position-relative">
               <div className="tf-product-info-list">
@@ -118,43 +164,43 @@ export default function QuickView() {
                   <div className="price">${quickViewItem.price.toFixed(2)}</div>
                 </div>
                 <div className="tf-product-description">
-                  <p>
-                    Nunc arcu faucibus a et lorem eu a mauris adipiscing conubia
-                    ac aptent ligula facilisis a auctor habitant parturient a
-                    a.Interdum fermentum.
-                  </p>
+                  <p>{quickViewItem.description}</p>
                 </div>
                 <div className="tf-product-info-variant-picker">
                   <div className="variant-picker-item">
                     <div className="variant-picker-label">
                       Color:
                       <span className="fw-6 variant-picker-label-value">
-                        {currentColor.value}
+                        {currentColor?.name}
                       </span>
                     </div>
                     <form className="variant-picker-values">
-                      {colors.map((color) => (
-                        <React.Fragment key={color.id}>
-                          <input
-                            id={color.id}
-                            type="radio"
-                            name="color1"
-                            readOnly
-                            checked={currentColor == color}
-                          />
-                          <label
-                            onClick={() => setCurrentColor(color)}
-                            className="hover-tooltip radius-60"
-                            htmlFor={color.id}
-                            data-value={color.value}
-                          >
-                            <span
-                              className={`btn-checkbox ${color.className}`}
+                      {productColors.map((color, index) => {
+                        const colorId = `color-${color.code}-${index}`;
+                        return (
+                          <React.Fragment key={colorId}>
+                            <input
+                              type="radio"
+                              name="color1"
+                              id={colorId}
+                              readOnly
+                              checked={currentColor?.code === color.code}
                             />
-                            <span className="tooltip">{color.value}</span>
-                          </label>
-                        </React.Fragment>
-                      ))}
+                            <label
+                              htmlFor={colorId}
+                              onClick={() => setCurrentColor(color)}
+                              className="hover-tooltip radius-60"
+                              data-value={color.name}
+                            >
+                              <span
+                                className="btn-checkbox"
+                                style={{ backgroundColor: color.code }}
+                              />
+                              <span className="tooltip">{color.name}</span>
+                            </label>
+                          </React.Fragment>
+                        );
+                      })}
                     </form>
                   </div>
                   <div className="variant-picker-item">
@@ -162,7 +208,7 @@ export default function QuickView() {
                       <div className="variant-picker-label">
                         Size:
                         <span className="fw-6 variant-picker-label-value">
-                          {currentSize.value}
+                          {currentSize?.value}
                         </span>
                       </div>
                       <div
@@ -173,25 +219,28 @@ export default function QuickView() {
                       </div>
                     </div>
                     <form className="variant-picker-values">
-                      {sizeOptions.map((size) => (
-                        <React.Fragment key={size.id}>
-                          <input
-                            type="radio"
-                            name="size1"
-                            id={size.id}
-                            readOnly
-                            checked={currentSize == size}
-                          />
-                          <label
-                            onClick={() => setCurrentSize(size)}
-                            className="style-text"
-                            htmlFor={size.id}
-                            data-value={size.value}
-                          >
-                            <p>{size.value}</p>
-                          </label>
-                        </React.Fragment>
-                      ))}
+                      {availableSizes.map((size, index) => {
+                        const sizeId = `size-${size}-${index}`;
+                        return (
+                          <React.Fragment key={sizeId}>
+                            <input
+                              type="radio"
+                              name="size1"
+                              id={sizeId}
+                              readOnly
+                              checked={currentSize?.value === size}
+                            />
+                            <label
+                              htmlFor={sizeId}
+                              onClick={() => setCurrentSize({ value: size })}
+                              className="style-text"
+                              data-value={size}
+                            >
+                              <p>{size}</p>
+                            </label>
+                          </React.Fragment>
+                        );
+                      })}
                     </form>
                   </div>
                 </div>
@@ -220,8 +269,7 @@ export default function QuickView() {
                       className="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action"
                     >
                       <span
-                        className={`icon icon-heart ${isAddedtoWishlist(quickViewItem.id) ? "added" : ""
-                          }`}
+                        className={`icon icon-heart ${isAddedtoWishlist(quickViewItem.id) ? "added" : ""}`}
                       />
                       <span className="tooltip">
                         {isAddedtoWishlist(quickViewItem.id)
@@ -238,11 +286,9 @@ export default function QuickView() {
                       className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
                     >
                       <span
-                        className={`icon icon-compare ${isAddedtoCompareItem(quickViewItem.id) ? "added" : ""
-                          }`}
+                        className={`icon icon-compare ${isAddedtoCompareItem(quickViewItem.id) ? "added" : ""}`}
                       />
                       <span className="tooltip">
-                        {" "}
                         {isAddedtoCompareItem(quickViewItem.id)
                           ? "Already Compared"
                           : "Add to Compare"}

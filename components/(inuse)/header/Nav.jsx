@@ -87,7 +87,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
       </li>
       <li className="menu-item position-relative">
         <Link
-          href="/faq-2"
+          href="/faq"
           className={`item-link ${Linkfs} ${textColor}`}
         >
           FAQ

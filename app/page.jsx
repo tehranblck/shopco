@@ -14,7 +14,7 @@ export const metadata = {
     icon: "/images/favikon.png",
   },
 };
-export default function Home() {
+export default async function Home() {
   return (
     <>
 

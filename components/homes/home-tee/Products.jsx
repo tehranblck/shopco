@@ -12,8 +12,6 @@ export default function Products() {
     setQuickAddItem,
     addToWishlist,
     isAddedtoWishlist,
-    addToCompareItem,
-    isAddedtoCompareItem,
   } = useContextElement();
   return (
     <section className="flat-spacing-27">
@@ -97,9 +95,8 @@ export default function Products() {
                       className="box-icon bg_white wishlist btn-icon-action"
                     >
                       <span
-                        className={`icon icon-heart ${
-                          isAddedtoWishlist(slide.id) ? "added" : ""
-                        }`}
+                        className={`icon icon-heart ${isAddedtoWishlist(slide.id) ? "added" : ""
+                          }`}
                       />
                       <span className="tooltip">
                         {isAddedtoWishlist(slide.id)
@@ -116,9 +113,8 @@ export default function Products() {
                       className="box-icon bg_white compare btn-icon-action"
                     >
                       <span
-                        className={`icon icon-compare ${
-                          isAddedtoCompareItem(slide.id) ? "added" : ""
-                        }`}
+                        className={`icon icon-compare ${isAddedtoCompareItem(slide.id) ? "added" : ""
+                          }`}
                       />
                       <span className="tooltip">
                         {" "}
